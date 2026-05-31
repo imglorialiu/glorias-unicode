@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝗚𝗹𝗢𝗥𝗶𝗔'𝘀 𝗨𝗻𝗶𝗰𝗼𝗱𝗲</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#ffffff;--bg2:#f7f6f3;--bg3:#efede8;
+  --text:#1c1b19;--text2:#6b6963;--text3:#b0ada6;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
+  --accent:#1c1b19;--heart:#c0392b;--toast-bg:#1c1b19;
+  --sym-hover:#f2f0ec;--sym-active:#e6e3dc;
+  --sidebar-w:160px;
+}
+body{font-family:'Hiragino Kaku Gothic Pro','Microsoft JhengHei','PingFang TC',sans-serif;background:var(--bg2);color:var(--text);min-height:100vh;}
+
+/* ── Header ── */
+header{background:var(--bg);border-bottom:1px solid var(--border);padding:0 1.5rem;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;gap:12px;}
+.logo{font-size:15px;font-weight:600;display:flex;align-items:center;gap:7px;flex-shrink:0;}
+/* ── Composer ── */
+.composer-wrap{flex:1;display:flex;align-items:center;gap:6px;min-width:0;max-width:540px;}
+.composer-input{flex:1;min-width:0;border:1px solid var(--border2);background:var(--bg2);border-radius:8px;padding:7px 11px;font-size:16px;color:var(--text);font-family:inherit;outline:none;transition:border-color .15s;letter-spacing:0.04em;}
+.composer-input:focus{border-color:var(--accent);}
+.composer-input::placeholder{color:var(--text3);font-size:13px;letter-spacing:0;}
+.composer-btn{flex-shrink:0;padding:7px 11px;border-radius:8px;font-size:12.5px;font-family:inherit;cursor:pointer;border:1px solid var(--border2);background:none;color:var(--text2);transition:background .12s,color .12s;white-space:nowrap;}
+.composer-btn:hover{background:var(--sym-hover);color:var(--text);}
+.composer-btn.save-btn{background:var(--accent);color:#fff;border-color:var(--accent);}
+.composer-btn.save-btn:hover{background:#333;}
+.composer-btn.save-btn:disabled{background:var(--bg3);color:var(--text3);border-color:var(--border2);cursor:default;}
+/* ── Header fav button ── */
+.header-fav-btn{
+  flex-shrink:0;
+  background:none;border:1px solid var(--border2);
+  border-radius:8px;padding:7px 12px;
+  font-size:15px;line-height:1;
+  color:var(--text3);cursor:pointer;
+  transition:color .15s,border-color .15s,background .15s;
+  font-family:inherit;position:relative;
+}
+.header-fav-btn:hover{color:var(--heart);border-color:var(--heart);background:rgba(192,57,43,0.05);}
+.header-fav-btn.has-fav{color:var(--heart);border-color:var(--heart);}
+.header-fav-badge{
+  position:absolute;top:-5px;right:-5px;
+  background:var(--heart);color:#fff;
+  font-size:9px;font-weight:600;
+  min-width:16px;height:16px;
+  border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  padding:0 3px;
+  line-height:1;
+}
+.search-wrap{position:relative;display:flex;align-items:center;}
+#search{border:1px solid var(--border2);background:var(--bg2);border-radius:999px;padding:7px 14px 7px 32px;font-size:13px;color:var(--text);width:180px;outline:none;transition:border-color .15s,width .2s;font-family:inherit;}
+#search:focus{border-color:var(--accent);width:220px;}
+#search::placeholder{color:var(--text3);}
+.search-icon{position:absolute;left:11px;font-size:13px;color:var(--text3);pointer-events:none;}
+
+/* ── Tab bar ── */
+.tab-bar-wrap{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:52px;z-index:100;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tab-bar-wrap::-webkit-scrollbar{display:none;}
+.tab-bar{display:flex;align-items:flex-end;padding:0 1.5rem;white-space:nowrap;min-width:max-content;}
+.tab{padding:13px 16px 11px;font-size:13.5px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;user-select:none;flex-shrink:0;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:500;}
+.tab.fav-tab{color:var(--text3);}
+.tab.fav-tab.active{color:var(--heart);border-bottom-color:var(--heart);}
+
+/* ── Main wrap ── */
+.main-wrap{max-width:960px;margin:0 auto;padding:1.75rem 1.5rem 4rem;}
+
+/* ── Fav layout: sidebar + content ── */
+.fav-layout{display:flex;gap:1.5rem;align-items:flex-start;}
+
+/* ── Sidebar (desktop) ── */
+.fav-sidebar{
+  width:var(--sidebar-w);flex-shrink:0;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  position:sticky;top:calc(52px + 44px + 1.75rem);
+}
+.sidebar-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;font-size:13px;color:var(--text2);
+  cursor:pointer;transition:background .1s,color .1s;
+  border-bottom:1px solid var(--border);gap:6px;
+}
+.sidebar-item:last-child{border-bottom:none;}
+.sidebar-item:hover{background:var(--sym-hover);color:var(--text);}
+.sidebar-item.active{background:var(--bg2);color:var(--text);font-weight:500;}
+.sidebar-item-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sidebar-item-cnt{font-size:11px;color:var(--text3);flex-shrink:0;}
+.sidebar-del{font-size:12px;color:var(--text3);flex-shrink:0;padding:0 2px;opacity:0;transition:opacity .15s,color .15s;}
+.sidebar-item:hover .sidebar-del{opacity:1;}
+.sidebar-del:hover{color:var(--heart);}
+.sidebar-add{
+  display:flex;align-items:center;gap:6px;
+  padding:10px 14px;font-size:12.5px;color:var(--text3);
+  cursor:pointer;transition:color .15s,background .15s;
+  border-top:1px solid var(--border);
+}
+.sidebar-add:hover{color:var(--text);background:var(--sym-hover);}
+
+/* ── Fav content ── */
+.fav-content{flex:1;min-width:0;}
+
+/* ── Mobile dropdown ── */
+.fav-dropdown-wrap{display:none;margin-bottom:1.25rem;}
+.fav-dropdown-row{display:flex;gap:8px;align-items:center;}
+.fav-dropdown-row select{
+  flex:1;border:1px solid var(--border2);background:var(--bg);
+  border-radius:8px;padding:8px 12px;font-size:13.5px;
+  font-family:inherit;color:var(--text);outline:none;
+  transition:border-color .15s;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b0ada6' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  padding-right:32px;
+}
+.fav-dropdown-row select:focus{border-color:var(--accent);}
+.add-cat-btn-sm{
+  flex-shrink:0;padding:8px 12px;border:1px solid var(--border2);
+  border-radius:8px;background:var(--bg);font-size:13px;
+  font-family:inherit;color:var(--text2);cursor:pointer;
+  transition:background .1s,color .1s;white-space:nowrap;
+}
+.add-cat-btn-sm:hover{background:var(--sym-hover);color:var(--text);}
+
+/* ── Section header ── */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.section-title{font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;}
+.section-count{font-size:12px;color:var(--text3);background:var(--bg3);padding:3px 10px;border-radius:999px;}
+
+/* ── Symbol grid ── */
+.symbol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:8px;}
+.sym-wrap{position:relative;}
+.sym{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:background .12s,border-color .12s,transform .12s,box-shadow .12s;user-select:none;width:100%;}
+.sym:hover{background:var(--sym-hover);border-color:var(--border2);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.07);}
+.sym:active{transform:scale(0.94);box-shadow:none;}
+.sym.copied{background:var(--accent);border-color:var(--accent);color:#fff;transform:scale(1.08);}
+.heart-btn{position:absolute;top:4px;right:5px;font-size:11px;line-height:1;color:var(--text3);cursor:pointer;transition:color .15s,transform .15s;user-select:none;z-index:2;padding:2px;}
+.heart-btn:hover{color:var(--heart);transform:scale(1.2);}
+.heart-btn.loved{color:var(--heart);}
+
+/* ── Manage bar ── */
+.manage-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.manage-btn{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--text2);cursor:pointer;padding:6px 12px;border:1px solid var(--border2);border-radius:8px;background:var(--bg);font-family:inherit;transition:color .15s,background .15s;}
+.manage-btn:hover{color:var(--text);background:var(--sym-hover);}
+.manage-btn.danger:hover{color:var(--heart);border-color:var(--heart);}
+
+/* ── Empty ── */
+.empty{text-align:center;padding:3rem 2rem;color:var(--text3);}
+.empty-icon{font-size:32px;margin-bottom:.75rem;}
+.empty p{font-size:13.5px;line-height:1.9;}
+
+/* ── Search ── */
+.search-note{font-size:13px;color:var(--text2);margin-bottom:1.25rem;}
+
+/* ── Toast ── */
+#toast{position:fixed;bottom:1.75rem;left:50%;transform:translateX(-50%) translateY(16px);background:var(--toast-bg);color:#fff;padding:9px 18px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:9999;white-space:nowrap;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── Modals ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:500;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg);border-radius:16px;padding:1.75rem;width:100%;max-width:360px;box-shadow:0 12px 48px rgba(0,0,0,0.14);}
+.modal h3{font-size:15px;font-weight:600;margin-bottom:1.25rem;}
+.modal label{font-size:12px;color:var(--text2);display:block;margin-bottom:5px;}
+.modal input,.modal select,.modal textarea{width:100%;border:1px solid var(--border2);background:var(--bg2);border-radius:8px;padding:9px 12px;font-size:14px;font-family:inherit;color:var(--text);outline:none;margin-bottom:1rem;transition:border-color .15s;}
+.modal input:focus,.modal select:focus,.modal textarea:focus{border-color:var(--accent);}
+.modal textarea{resize:vertical;min-height:76px;font-size:21px;line-height:1.9;}
+.modal-hint{font-size:11.5px;color:var(--text3);margin-top:-.75rem;margin-bottom:1rem;}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;}
+.btn{padding:8px 18px;border-radius:8px;font-size:13px;font-family:inherit;cursor:pointer;border:1px solid var(--border2);background:none;color:var(--text);transition:background .1s;}
+.btn:hover{background:var(--bg2);}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+.btn-primary:hover{background:#333;}
+
+/* ── Fav cat picker modal ── */
+.cat-list{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem;max-height:200px;overflow-y:auto;}
+.cat-pick-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--border2);border-radius:8px;cursor:pointer;font-size:13.5px;transition:background .1s,border-color .1s;}
+.cat-pick-item:hover{background:var(--sym-hover);border-color:var(--accent);}
+.cat-pick-icon{font-size:15px;color:var(--text3);}
+.cat-pick-new{color:var(--text3);border-style:dashed;}
+.cat-pick-new:hover{color:var(--text);}
+
+/* ── Font tab ── */
+.tab.font-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.font-input-wrap{position:relative;margin-bottom:1.5rem;}
+.font-input-wrap input{
+  width:100%;border:1px solid var(--border2);background:var(--bg);
+  border-radius:10px;padding:13px 16px;font-size:17px;
+  font-family:inherit;color:var(--text);outline:none;
+  transition:border-color .15s;
+}
+.font-input-wrap input:focus{border-color:var(--accent);}
+.font-input-wrap input::placeholder{color:var(--text3);}
+.font-input-clear{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  font-size:14px;color:var(--text3);cursor:pointer;
+  transition:color .15s;display:none;
+}
+.font-input-clear:hover{color:var(--text);}
+.font-hint{font-size:12px;color:var(--text3);margin-bottom:1.25rem;}
+.font-list{display:flex;flex-direction:column;gap:6px;}
+.font-row{
+  display:flex;align-items:center;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;
+  cursor:pointer;transition:background .12s,border-color .12s;
+  gap:12px;
+}
+.font-row:hover{background:var(--sym-hover);border-color:var(--border2);}
+.font-row.copied-row{background:var(--accent);border-color:var(--accent);}
+.font-row-label{
+  font-size:11px;color:var(--text3);
+  min-width:72px;flex-shrink:0;
+  line-height:1.4;
+}
+.font-row.copied-row .font-row-label{color:rgba(255,255,255,0.6);}
+.font-row-text{
+  flex:1;font-size:18px;word-break:break-all;
+  color:var(--text);line-height:1.5;
+}
+.font-row.copied-row .font-row-text{color:#fff;}
+.font-row-copy{
+  font-size:12px;color:var(--text3);flex-shrink:0;
+  padding:4px 10px;border:1px solid var(--border2);
+  border-radius:6px;transition:color .12s,border-color .12s,background .12s;
+  white-space:nowrap;
+}
+.font-row:hover .font-row-copy{border-color:var(--border2);color:var(--text2);}
+.font-row.copied-row .font-row-copy{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);}
+.font-empty{text-align:center;padding:4rem 2rem;color:var(--text3);}
+.font-empty .font-empty-icon{font-size:28px;margin-bottom:.75rem;}
+.font-empty p{font-size:13.5px;}
+@media(max-width:500px){
+  .font-row-label{min-width:58px;font-size:10.5px;}
+  .font-row-text{font-size:16px;}
+  .font-row-copy{display:none;}
+}
+
+@media(max-width:600px){
+  .fav-sidebar{display:none;}
+  .fav-dropdown-wrap{display:block;}
+  .main-wrap{padding:1.25rem 1rem 4rem;}
+  .symbol-grid{grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:6px;}
+  .sym{font-size:18px;border-radius:8px;}
+  header{padding:0 1rem;}
+  #search{width:140px;}
+  #search:focus{width:170px;}
+  .heart-btn{font-size:10px;top:3px;right:4px;}
+}
+/* ── Kaomoji tab ── */
+.tab.kao-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.kao-subcats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem;}
+.kao-subcat-btn{
+  padding:6px 14px;border-radius:999px;font-size:12.5px;
+  border:1px solid var(--border2);background:var(--bg);
+  color:var(--text2);cursor:pointer;font-family:inherit;
+  transition:background .12s,color .12s,border-color .12s;white-space:nowrap;
+}
+.kao-subcat-btn:hover{background:var(--sym-hover);color:var(--text);}
+.kao-subcat-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.kao-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:10px;align-items:start;
+}
+.kao-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:12px;
+  padding:14px 16px;cursor:pointer;
+  position:relative;
+  transition:background .12s,border-color .12s,box-shadow .12s,transform .1s;
+}
+.kao-card:hover{background:var(--sym-hover);border-color:var(--border2);box-shadow:0 3px 10px rgba(0,0,0,0.06);}
+.kao-card:active{transform:scale(0.98);}
+.kao-card.copied-kao{background:var(--accent);border-color:var(--accent);}
+.kao-card-text{
+  font-family:'Courier New',Courier,monospace;
+  font-size:13.5px;line-height:1.85;
+  white-space:pre-wrap;
+  word-break:break-all;
+  color:var(--text);
+  display:block;
+  padding-right:18px;
+}
+.kao-card.copied-kao .kao-card-text{color:#fff;}
+.kao-heart{
+  position:absolute;top:8px;right:9px;
+  font-size:12px;line-height:1;
+  color:var(--text3);cursor:pointer;
+  transition:color .15s,transform .15s;
+  user-select:none;z-index:10;padding:4px;
+  pointer-events:auto;
+}
+.kao-heart:hover{color:var(--heart);transform:scale(1.2);}
+.kao-heart.loved{color:var(--heart);}
+.kao-card.copied-kao .kao-heart{color:rgba(255,255,255,0.5);}
+.kao-card.copied-kao .kao-heart.loved{color:rgba(255,255,255,0.9);}
+.heart-btn.fav-del-btn{color:var(--text3);}
+.heart-btn.fav-del-btn:hover{color:var(--heart);transform:scale(1.2);}
+.kao-card.fav-kao-card{padding-top:28px;}
+/* ── 收藏頁符號格 ── */
+.fav-sym-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(80px,1fr));
+  gap:8px;
+  margin-bottom:0;
+  align-items:start;
+}
+.fav-sym-card{
+  position:relative;
+  min-height:62px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;cursor:pointer;padding:18px 10px 8px;
+  transition:background .12s,border-color .12s,transform .12s,box-shadow .12s;
+  user-select:none;word-break:break-all;text-align:center;
+  font-family:'Courier New',Courier,monospace;
+  line-height:1.6;
+}
+.fav-sym-card:hover{background:var(--sym-hover);border-color:var(--border2);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.07);}
+.fav-sym-card:active{transform:scale(0.94);}
+.fav-sym-card.copied{background:var(--accent);border-color:var(--accent);color:#fff;}
+.fav-sym-text{pointer-events:none;}
+.fav-combo-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0;}
+.fav-combo-card{
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:10px 28px 10px 12px;
+  background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  cursor:pointer;font-size:15px;
+  font-family:'Courier New',Courier,monospace;
+  transition:background .12s,border-color .12s,box-shadow .12s;
+  user-select:none;word-break:break-all;
+}
+.fav-combo-card:hover{background:var(--sym-hover);border-color:var(--border2);box-shadow:0 3px 8px rgba(0,0,0,0.06);}
+.fav-combo-card.copied{background:var(--accent);border-color:var(--accent);color:#fff;}
+.fav-combo-text{pointer-events:none;}
+.fav-sym-del{
+  position:absolute;top:3px;right:4px;
+  font-size:10px;color:var(--text3);cursor:pointer;
+  line-height:1;padding:2px;user-select:none;
+  transition:color .15s;
+}
+.fav-sym-del:hover{color:var(--heart);}
+/* ── 收藏頁顏文字卡片 ── */
+.fav-kao-card{
+  position:relative;padding:28px 14px 14px;
+  background:var(--bg);border:1px solid var(--border);border-radius:12px;
+  cursor:pointer;overflow:hidden;
+  transition:background .12s,border-color .12s,box-shadow .12s;
+}
+.fav-kao-card:hover{background:var(--sym-hover);border-color:var(--border2);box-shadow:0 3px 10px rgba(0,0,0,0.06);}
+.fav-kao-card.copied-kao{background:var(--accent);border-color:var(--accent);}
+.fav-kao-card.copied-kao .kao-card-text{color:#fff;}
+.fav-kao-del{
+  position:absolute;top:7px;right:8px;
+  font-size:11px;line-height:1;
+  color:var(--text3);cursor:pointer;
+  background:none;border:none;padding:3px 5px;
+  border-radius:4px;
+  transition:color .15s,background .15s;
+  font-family:inherit;
+}
+.fav-kao-del:hover{color:var(--heart);background:rgba(192,57,43,0.08);}
+@media(max-width:600px){
+  .kao-grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;}
+  .kao-card{padding:11px 12px;}
+  .kao-card-text{font-size:12px;}
+}
+/* ── Mobile composer bar ── */
+.mobile-composer-bar{
+  display:none;
+  align-items:center;gap:6px;
+  padding:8px 1rem;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:96px;z-index:95;
+}
+.mobile-composer-bar .composer-input{
+  flex:1;min-width:0;
+}
+/* ── Symbols page layout ── */
+.sym-page{display:flex;gap:0;min-height:calc(100vh - 104px);}
+/* Sidebar desktop */
+.sym-sidebar{
+  width:148px;flex-shrink:0;
+  border-right:1px solid var(--border);
+  padding:1.25rem 0;
+  position:sticky;top:104px;
+  height:calc(100vh - 104px);
+  overflow-y:auto;scrollbar-width:none;
+  background:var(--bg);
+}
+.sym-sidebar::-webkit-scrollbar{display:none;}
+.sym-nav-item{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 1rem;font-size:13px;color:var(--text2);
+  cursor:pointer;transition:background .1s,color .1s;
+  border-left:2px solid transparent;
+}
+.sym-nav-item:hover{background:var(--sym-hover);color:var(--text);}
+.sym-nav-item.active{
+  color:var(--accent);font-weight:500;
+  border-left-color:var(--accent);background:var(--bg2);
+}
+.sym-nav-icon{font-size:14px;opacity:.7;}
+.sym-nav-cnt{margin-left:auto;font-size:11px;color:var(--text3);}
+/* Mobile pill bar */
+.sym-pill-bar{
+  display:none;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  padding:.75rem 1rem;gap:6px;
+  border-bottom:1px solid var(--border);
+  background:var(--bg);
+  position:sticky;top:96px;z-index:90;
+}
+.sym-pill-bar::-webkit-scrollbar{display:none;}
+.sym-pill{
+  flex-shrink:0;padding:5px 12px;border-radius:999px;
+  font-size:12.5px;border:1px solid var(--border2);
+  background:var(--bg);color:var(--text2);cursor:pointer;
+  white-space:nowrap;transition:background .12s,color .12s,border-color .12s;
+  font-family:inherit;
+}
+.sym-pill:hover{background:var(--sym-hover);color:var(--text);}
+.sym-pill.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+/* Content */
+.sym-content{flex:1;min-width:0;padding:1.75rem 1.5rem 4rem;}
+.sym-section{margin-bottom:2.5rem;}
+.sym-section-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1rem;padding-bottom:.75rem;
+  border-bottom:1px solid var(--border);
+}
+.sym-section-title{font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px;}
+.sym-section-count{font-size:12px;color:var(--text3);background:var(--bg3);padding:3px 10px;border-radius:999px;}
+@media(max-width:600px){
+  .sym-sidebar{display:none;}
+  .sym-pill-bar{display:flex;}
+  .sym-content{padding:1.25rem 1rem 4rem;}
+  /* 手機隱藏 header 輸入欄 */
+  .composer-wrap{display:none;}
+  /* 手機版輸入欄 bar */
+  .mobile-composer-bar{display:flex !important;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span></span>𝗚𝗹𝗢𝗥𝗶𝗔'𝘀 𝗨𝗻𝗶𝗰𝗼𝗱𝗲</div>
+  <div class="composer-wrap">
+    <input type="text" id="composer" class="composer-input" placeholder="點符號自動累加…" autocomplete="off" spellcheck="false">
+    <button class="composer-btn" id="composer-clear" onclick="clearComposer()" title="清除">✕</button>
+    <button class="composer-btn save-btn" id="composer-save" onclick="saveComposer()" disabled>收藏</button>
+  </div>
+  <button class="header-fav-btn" id="header-fav-btn" onclick="switchTab('__fav')" title="我的收藏">♡</button>
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="search" placeholder="搜尋…" autocomplete="off">
+  </div>
+</header>
+
+<div class="tab-bar-wrap">
+  <div class="tab-bar" id="tab-bar"></div>
+</div>
+
+<!-- 手機版輸入欄（Tab 列下方，只在特殊符號頁顯示）-->
+<div class="mobile-composer-bar" id="mobile-composer-bar" style="display:none">
+  <input type="text" id="composer-mobile" class="composer-input" placeholder="點符號自動累加…" autocomplete="off" spellcheck="false" readonly>
+  <button class="composer-btn" onclick="clearComposerMobile()" title="清除">✕</button>
+  <button class="composer-btn save-btn" id="composer-save-mobile" onclick="saveComposer()" disabled>收藏</button>
+</div>
+
+<div class="main-wrap" id="main"></div>
+<div id="toast"></div>
+
+<!-- 選分類 modal -->
+<div class="modal-overlay" id="modal-pick">
+  <div class="modal">
+    <h3 id="pick-title">加入收藏</h3>
+    <div class="cat-list" id="cat-list"></div>
+  </div>
+</div>
+
+<!-- 新增分類 modal -->
+<div class="modal-overlay" id="modal-newcat">
+  <div class="modal">
+    <h3>新增分類</h3>
+    <label>分類名稱</label>
+    <input type="text" id="newcat-name" placeholder="例如：顏文字、符號…" maxlength="20">
+    <div class="modal-actions">
+      <button class="btn" onclick="closeNewCat()">取消</button>
+      <button class="btn btn-primary" onclick="confirmNewCat()">新增</button>
+    </div>
+  </div>
+</div>
+
+<!-- 手動新增符號 modal -->
+<div class="modal-overlay" id="modal-addsym">
+  <div class="modal">
+    <h3>手動新增符號</h3>
+    <label>分類</label>
+    <select id="addsym-cat"></select>
+    <label>符號（可多個）</label>
+    <textarea id="addsym-syms" placeholder="例如：✦ ✧ (´･ω･`)"></textarea>
+    <p class="modal-hint">用空格或換行分隔多個符號</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeAddSym()">取消</button>
+      <button class="btn btn-primary" onclick="confirmAddSym()">新增</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="import-file" accept=".json" style="display:none" onchange="importFav(event)">
+
+<script>
+/* ══ 資安：XSS 防護 ══ */
+function esc(str){
+  // 將所有使用者資料轉義，防止惡意 HTML 被執行
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#x27;');
+}
+
+/* ══ Unicode 資料（動態載入）══ */
+let CURATED = [];
+let curatedState = 'idle'; // 'idle' | 'loading' | 'loaded' | 'error'
+
+async function loadCurated(){
+  if(curatedState !== 'idle') return;
+  curatedState = 'loading';
+  render(); // 立即顯示 loading 狀態
+  try{
+    const res = await fetch('./data/unicode/greek.json');
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+
+    // 依 codepoint 拆兩個副分類
+    const modern = data.symbols.filter(s => {
+      const cp = s.codePointAt(0);
+      return cp >= 0x0370 && cp <= 0x03FF;
+    });
+    const polytonic = data.symbols.filter(s => {
+      const cp = s.codePointAt(0);
+      return cp >= 0x1F00 && cp <= 0x1FFF;
+    });
+
+    CURATED = [
+      { id: 'greek-modern',    name: '現代希臘文',     icon: '', symbols: modern },
+      { id: 'greek-polytonic', name: '多音調希臘文', icon: '', symbols: polytonic }
+    ];
+    curatedState = 'loaded';
+  }catch(err){
+    console.error('Failed to load greek data:', err);
+    curatedState = 'error';
+  }
+  render();
+}
+
+/* ══ State ══ */
+// favData = { categories: [{id, name, symbols:[]}], ... }
+let favData = loadFavData();
+let activeMainTab = '__sym';
+let activeFavCat = favData.categories[0]?.id || null;
+let searchMode = false;
+let pendingFavSym = null; // 等待選分類的符號
+let composerRaw = '';    // 輸入欄原始內容（保留換行）
+
+function loadFavData(){
+  try{
+    const s = localStorage.getItem('sym-fav-v2');
+    if(s) return JSON.parse(s);
+  }catch(e){}
+  return { categories: [] };
+}
+function saveFavData(){ try{ localStorage.setItem('sym-fav-v2', JSON.stringify(favData)); }catch(e){} }
+
+function allFavSymbols(){
+  const set = new Set();
+  favData.categories.forEach(c => c.symbols.forEach(s => set.add(s)));
+  return set;
+}
+function isFaved(sym){ return allFavSymbols().has(sym); }
+function favCatOf(sym){
+  for(const c of favData.categories){ if(c.symbols.includes(sym)) return c.id; }
+  return null;
+}
+
+/* ══ Render ══ */
+function render(){
+  if(curatedState === 'idle') loadCurated();
+  renderTabs(); renderMain(); updateHeaderFav(); showHideMobileComposer();
+}
+
+function updateHeaderFav(){
+  const btn = document.getElementById('header-fav-btn');
+  if(!btn) return;
+  const total = favData.categories.reduce((n,c)=>n+c.symbols.length,0);
+  btn.innerHTML = total > 0
+    ? `♥<span class="header-fav-badge">${total > 99 ? '99+' : total}</span>`
+    : '♡';
+  btn.classList.toggle('has-fav', total > 0);
+}
+
+function renderTabs(){
+  const bar = document.getElementById('tab-bar');
+  const totalFav = favData.categories.reduce((n,c)=>n+c.symbols.length,0);
+  const favIcon = totalFav > 0 ? '♥' : '♡';
+  const favLabel = totalFav > 0 ? `${esc(favIcon)} 我的收藏 (${totalFav})` : `${esc(favIcon)} 我的收藏`;
+  const symActive = (CURATED.some(c=>c.id===activeMainTab) || activeMainTab==='__sym') && !searchMode;
+  bar.innerHTML =
+    `<div class="tab${symActive?' active':''}" onclick="switchTab('__sym')">Unicode</div>` +
+    `<div class="tab font-tab${activeMainTab==='__font'&&!searchMode?' active':''}" onclick="switchTab('__font')">字型轉換</div>` +
+    `<div class="tab kao-tab${activeMainTab==='__kao'&&!searchMode?' active':''}" onclick="switchTab('__kao')">顏文字</div>` +
+    `<div class="tab fav-tab${activeMainTab==='__fav'&&!searchMode?' active':''}" onclick="switchTab('__fav')">${favLabel}</div>`;
+}
+
+
+function renderMain(){
+  const main = document.getElementById('main');
+
+  if(searchMode){
+    const q = document.getElementById('search').value.trim();
+    let results=[]; const seen=new Set();
+    CURATED.forEach(cat=>cat.symbols.forEach(s=>{if(s.includes(q)&&!seen.has(s)){results.push({sym:s,src:'curated'});seen.add(s);}}));
+    favData.categories.forEach(cat=>cat.symbols.forEach(s=>{if(s.includes(q)&&!seen.has(s)){results.push({sym:s,src:'fav'});seen.add(s);}}));
+    main.innerHTML=`<p class="search-note">搜尋「${esc(q)}」— 找到 ${results.length} 個</p>`+
+      (results.length===0?`<div class="empty"><div class="empty-icon">◇</div><p>沒有找到符合的符號</p></div>`:
+      `<div class="symbol-grid">${results.map(r=>symWrapHTML(r.sym)).join('')}</div>`);
+    bindClicks(); return;
+  }
+
+  if(activeMainTab==='__fav'){ renderFav(main); return; }
+  if(activeMainTab==='__font'){ renderFont(main); return; }
+  if(activeMainTab==='__kao'){ renderKao(main); return; }
+  // 特殊符號頁（含所有 CURATED 分類）
+  renderSymbols(main);
+}
+
+function renderFav(main){
+  // 若無分類
+  if(favData.categories.length===0){
+    main.innerHTML=`
+      <div class="empty">
+        <div class="empty-icon">♡</div>
+        <p>還沒有建立任何分類<br>先新增一個分類，再從其他頁籤收藏符號</p>
+      </div>
+      <div class="manage-bar" style="justify-content:center;margin-top:1rem;">
+        <button class="manage-btn" onclick="openNewCat()">＋ 新增分類</button>
+      </div>`;
+    return;
+  }
+
+  // 確保 activeFavCat 有效
+  if(!favData.categories.find(c=>c.id===activeFavCat)){
+    activeFavCat = favData.categories[0].id;
+  }
+  const curCat = favData.categories.find(c=>c.id===activeFavCat);
+
+  // 電腦側邊欄 + 手機下拉
+  const sidebarHTML=`
+    <div class="fav-sidebar">
+      ${favData.categories.map(c=>`
+        <div class="sidebar-item${c.id===activeFavCat?' active':''}" onclick="switchFavCat('${esc(c.id)}')">
+          <span class="sidebar-item-name">${esc(c.name)}</span>
+          <span class="sidebar-item-cnt">${c.symbols.length}</span>
+          <span class="sidebar-del" onclick="deleteFavCat(event,'${esc(c.id)}')">✕</span>
+        </div>`).join('')}
+      <div class="sidebar-add" onclick="openNewCat()">＋ 新增分類</div>
+    </div>`;
+
+  const dropdownHTML=`
+    <div class="fav-dropdown-wrap">
+      <div class="fav-dropdown-row">
+        <select onchange="switchFavCat(this.value)">
+          ${favData.categories.map(c=>`<option value="${esc(c.id)}"${c.id===activeFavCat?' selected':''}>${esc(c.name)} (${c.symbols.length})</option>`).join('')}
+        </select>
+        <button class="add-cat-btn-sm" onclick="openNewCat()">＋ 新增分類</button>
+      </div>
+    </div>`;
+
+  // 用來源判斷格式：含換行 → 顏文字卡片；多字元 → 組合卡片；單字元 → 符號格
+  function isKao(s){ return s.includes('\n'); }
+  function isCombo(s){ return !isKao(s) && [...s].length > 1; }
+
+  const syms = curCat.symbols;
+  const kaoList   = syms.filter(s=>isKao(s));
+  const comboList = syms.filter(s=>isCombo(s));
+  const symList   = syms.filter(s=>!isKao(s)&&!isCombo(s));
+
+  function favCard(s, encoded){
+    return `<div class="fav-sym-card" data-sym="${encoded}" title="點擊複製">
+      <span class="fav-sym-del" data-sym="${encoded}">×</span>
+      <span class="fav-sym-text">${esc(s)}</span>
+    </div>`;
+  }
+
+  let contentHTML = '';
+  if(syms.length===0){
+    contentHTML = `<div class="empty"><div class="empty-icon">◇</div><p>這個分類還沒有符號<br>點其他頁籤的 ♡ 加入</p></div>`;
+  } else {
+    // 單一符號：小正方形格
+    if(symList.length>0){
+      contentHTML += `<div class="fav-sym-grid">${symList.map(s=>favCard(s,encodeURIComponent(s))).join('')}</div>`;
+    }
+    // 多字元組合：全寬彈性卡片
+    if(comboList.length>0){
+      if(symList.length>0) contentHTML += `<p style="font-size:12px;color:var(--text3);margin:1.25rem 0 .75rem;">組合符號</p>`;
+      contentHTML += `<div class="fav-combo-grid">${comboList.map(s=>
+        `<div class="fav-combo-card" data-sym="${encodeURIComponent(s)}" title="點擊複製">
+          <span class="fav-sym-del" data-sym="${encodeURIComponent(s)}">×</span>
+          <span class="fav-combo-text">${esc(s)}</span>
+        </div>`).join('')}</div>`;
+    }
+    // 顏文字：多行卡片
+    if(kaoList.length>0){
+      if(symList.length>0||comboList.length>0) contentHTML += `<p style="font-size:12px;color:var(--text3);margin:1.25rem 0 .75rem;">顏文字</p>`;
+      contentHTML += `<div class="kao-grid">${kaoList.map(k=>`
+        <div class="fav-kao-card" data-kao="${encodeURIComponent(k)}">
+          <span class="fav-kao-del" data-kao="${encodeURIComponent(k)}">×</span>
+          <span class="kao-card-text">${esc(k)}</span>
+        </div>`).join('')}</div>`;
+    }
+  }
+
+  const manageHTML=`
+    <div class="manage-bar">
+      <button class="manage-btn" onclick="openAddSym()">＋ 手動新增</button>
+      <button class="manage-btn" onclick="exportFav()">↓ 匯出備份</button>
+      <button class="manage-btn" onclick="document.getElementById('import-file').click()">↑ 匯入備份</button>
+    </div>`;
+
+  main.innerHTML=`
+    ${dropdownHTML}
+    <div class="fav-layout">
+      ${sidebarHTML}
+      <div class="fav-content" id="fav-content">
+        <div class="section-header">
+          <span class="section-title">♥ ${esc(curCat.name)}</span>
+          <span class="section-count">${curCat.symbols.length} 個</span>
+        </div>
+        ${contentHTML}
+        ${manageHTML}
+      </div>
+    </div>`;
+
+  // 統一事件委派
+  const favContent = main.querySelector('#fav-content');
+  if(favContent){
+    favContent.addEventListener('click', function(e){
+      // 符號/組合刪除（共用 fav-sym-del）
+      const symDel = e.target.closest('.fav-sym-del');
+      if(symDel){
+        e.stopPropagation();
+        const sym = decodeURIComponent(symDel.dataset.sym);
+        favData.categories.forEach(c=>{ c.symbols=c.symbols.filter(s=>s!==sym); });
+        saveFavData(); render();
+        showToast('已移除　'+sym.slice(0,10));
+        return;
+      }
+      // 單一符號複製
+      const symCard = e.target.closest('.fav-sym-card');
+      if(symCard){
+        const sym = decodeURIComponent(symCard.dataset.sym);
+        navigator.clipboard.writeText(sym).then(()=>{
+          symCard.classList.add('copied');
+          setTimeout(()=>symCard.classList.remove('copied'),550);
+          showToast('已複製　'+sym);
+        });
+        return;
+      }
+      // 組合符號複製
+      const comboCard = e.target.closest('.fav-combo-card');
+      if(comboCard){
+        const sym = decodeURIComponent(comboCard.dataset.sym);
+        navigator.clipboard.writeText(sym).then(()=>{
+          comboCard.classList.add('copied');
+          setTimeout(()=>comboCard.classList.remove('copied'),550);
+          const preview = sym.slice(0,20)+(sym.length>20?'…':'');
+          showToast('已複製　'+preview);
+        });
+        return;
+      }
+      // 顏文字刪除
+      const kaoDel = e.target.closest('.fav-kao-del');
+      if(kaoDel){
+        e.stopPropagation();
+        const sym = decodeURIComponent(kaoDel.dataset.kao);
+        favData.categories.forEach(c=>{ c.symbols=c.symbols.filter(s=>s!==sym); });
+        saveFavData(); render();
+        showToast('已移除收藏');
+        return;
+      }
+      // 顏文字複製
+      const kaoCard = e.target.closest('.fav-kao-card');
+      if(kaoCard && !e.target.closest('.fav-kao-del')){
+        const text = decodeURIComponent(kaoCard.dataset.kao);
+        navigator.clipboard.writeText(text).then(()=>{
+          kaoCard.classList.add('copied-kao');
+          setTimeout(()=>kaoCard.classList.remove('copied-kao'),650);
+          const preview = text.replace(/\n/g,' ').slice(0,20);
+          showToast('已複製　'+preview+(text.length>20?'…':''));
+        });
+      }
+    });
+  }
+}
+
+function switchFavCat(id){ activeFavCat=id; render(); }
+
+function deleteFavCat(e, id){
+  e.stopPropagation();
+  const cat=favData.categories.find(c=>c.id===id);
+  if(!cat) return;
+  if(cat.symbols.length>0){
+    if(!confirm(`刪除「${cat.name}」分類？裡面的 ${cat.symbols.length} 個符號也會一起刪除。`)) return;
+  }
+  favData.categories=favData.categories.filter(c=>c.id!==id);
+  if(activeFavCat===id) activeFavCat=favData.categories[0]?.id||null;
+  saveFavData(); render();
+  showToast('已刪除分類「'+cat.name+'」');
+}
+
+/* ══ Symbol HTML ══ */
+function symWrapHTML(s, inFav=false){
+  const faved=isFaved(s);
+  const safeS=esc(s);
+  if(inFav){
+    return `<div class="sym-wrap">
+      <div class="sym fav-sym" data-sym="${encodeURIComponent(s)}" title="點擊複製">${safeS}</div>
+      <span class="heart-btn fav-del-btn" data-sym="${encodeURIComponent(s)}" title="移除">×</span>
+    </div>`;
+  }
+  return `<div class="sym-wrap">
+    <div class="sym" data-sym="${encodeURIComponent(s)}" title="點擊複製">${safeS}</div>
+    <span class="heart-btn${faved?' loved':''}" data-sym="${encodeURIComponent(s)}">${faved?'♥':'♡'}</span>
+  </div>`;
+}
+
+/* ══ Bind clicks ══ */
+function bindClicks(){
+  // 策展頁符號（排除收藏頁的 fav-sym）→ 累加到輸入欄
+  document.querySelectorAll('.sym:not(.fav-sym)').forEach(el=>{
+    el.onclick=function(){
+      const s=decodeURIComponent(this.dataset.sym);
+      composerAppend(s);
+      this.classList.add('copied');
+      setTimeout(()=>this.classList.remove('copied'),550);
+    };
+  });
+  // 收藏頁符號 → 直接複製
+  document.querySelectorAll('.fav-sym').forEach(el=>{
+    el.onclick=function(){
+      const s=decodeURIComponent(this.dataset.sym);
+      navigator.clipboard.writeText(s).then(()=>{
+        this.classList.add('copied');
+        setTimeout(()=>this.classList.remove('copied'),550);
+        showToast('已複製　'+s);
+      });
+    };
+  });
+  document.querySelectorAll('.heart-btn').forEach(el=>{
+    el.onclick=function(e){
+      e.stopPropagation();
+      const sym=decodeURIComponent(this.dataset.sym);
+      if(this.classList.contains('fav-del-btn')){
+        // 收藏頁 ✕ → 直接移除
+        favData.categories.forEach(c=>{ c.symbols=c.symbols.filter(s=>s!==sym); });
+        saveFavData(); render();
+        showToast('已移除　'+sym);
+      } else if(isFaved(sym)){
+        // 策展頁 ♥ → 移除收藏
+        favData.categories.forEach(c=>{ c.symbols=c.symbols.filter(s=>s!==sym); });
+        saveFavData(); render();
+        showToast('已移除收藏　'+sym);
+      } else {
+        // 策展頁 ♡ → 加入收藏
+        pendingFavSym=sym;
+        openPickCat(sym);
+      }
+    };
+  });
+}
+
+/* ══ Pick category modal ══ */
+function openPickCat(sym){
+  const preview = sym.replace(/\n/g,' ').slice(0,15)+(sym.length>15?'…':'');
+  document.getElementById('pick-title').textContent='「'+preview+'」加入哪個分類？';
+  const list=document.getElementById('cat-list');
+  list.innerHTML=favData.categories.map(c=>`
+    <div class="cat-pick-item" onclick="addToFavCat('${esc(c.id)}')">
+      <span class="cat-pick-icon">♡</span>
+      <span>${esc(c.name)}</span>
+      <span style="margin-left:auto;font-size:12px;color:var(--text3)">${c.symbols.length} 個</span>
+    </div>`).join('')+
+    `<div class="cat-pick-item cat-pick-new" onclick="openNewCatFromPick()">
+      <span class="cat-pick-icon">＋</span>
+      <span>新增分類…</span>
+    </div>`;
+  document.getElementById('modal-pick').classList.add('open');
+}
+
+function addToFavCat(catId){
+  if(!pendingFavSym) return;
+  const cat=favData.categories.find(c=>c.id===catId);
+  if(cat&&!cat.symbols.includes(pendingFavSym)){
+    cat.symbols.push(pendingFavSym);
+    saveFavData();
+  }
+  closePickCat();
+  const preview = pendingFavSym.replace(/\n/g,' ').slice(0,12);
+  showToast('已加入「'+cat.name+'」　'+preview);
+  pendingFavSym=null;
+  // 根據當前頁面決定如何更新
+  if(activeMainTab==='__kao'){
+    renderTabs();
+    const main=document.getElementById('main');
+    renderKao(main);
+  } else {
+    render();
+  }
+}
+
+function closePickCat(){
+  document.getElementById('modal-pick').classList.remove('open');
+}
+
+/* ══ New category modal ══ */
+let newCatFromPick=false;
+function openNewCat(){ newCatFromPick=false; _openNewCat(); }
+function openNewCatFromPick(){ newCatFromPick=true; closePickCat(); _openNewCat(); }
+function _openNewCat(){
+  document.getElementById('newcat-name').value='';
+  document.getElementById('modal-newcat').classList.add('open');
+  setTimeout(()=>document.getElementById('newcat-name').focus(),100);
+}
+function closeNewCat(){ document.getElementById('modal-newcat').classList.remove('open'); }
+function confirmNewCat(){
+  const name=document.getElementById('newcat-name').value.trim();
+  if(!name){alert('請輸入分類名稱');return;}
+  const id='cat_'+Date.now();
+  favData.categories.push({id,name,symbols:[]});
+  activeFavCat=id;
+  saveFavData();
+  closeNewCat();
+  if(newCatFromPick&&pendingFavSym){
+    addToFavCat(id);
+  } else {
+    activeMainTab='__fav';
+    render();
+    showToast('已新增分類「'+name+'」');
+  }
+}
+
+/* ══ Add symbol manually ══ */
+function openAddSym(){
+  const sel=document.getElementById('addsym-cat');
+  sel.innerHTML=favData.categories.map(c=>`<option value="${esc(c.id)}"${c.id===activeFavCat?' selected':''}>${esc(c.name)}</option>`).join('');
+  document.getElementById('addsym-syms').value='';
+  document.getElementById('modal-addsym').classList.add('open');
+  setTimeout(()=>document.getElementById('addsym-syms').focus(),100);
+}
+function closeAddSym(){ document.getElementById('modal-addsym').classList.remove('open'); }
+function confirmAddSym(){
+  const catId=document.getElementById('addsym-cat').value;
+  const raw=document.getElementById('addsym-syms').value;
+  const syms=[...raw].filter(s=>s.trim()&&s!=='\n'&&s!==' ');
+  if(!syms.length){alert('請輸入至少一個符號');return;}
+  const cat=favData.categories.find(c=>c.id===catId);
+  let added=0;
+  if(cat){ syms.forEach(s=>{ if(!cat.symbols.includes(s)){cat.symbols.push(s);added++;} }); }
+  saveFavData(); activeFavCat=catId; render(); closeAddSym();
+  showToast(`✦ 已新增 ${added} 個符號`);
+}
+
+/* ══ Export / Import ══ */
+function exportFav(){
+  const blob=new Blob([JSON.stringify(favData,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='my-symbols-backup.json';a.click();
+  showToast('已匯出備份');
+}
+function importFav(e){
+  const file=e.target.files[0];if(!file)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      const d=JSON.parse(ev.target.result);
+      if(d.categories&&Array.isArray(d.categories)){
+        if(confirm('確定要匯入？這會取代目前的收藏。')){
+          favData=d;saveFavData();activeFavCat=favData.categories[0]?.id||null;
+          activeMainTab='__fav';render();showToast('匯入成功 ✦');
+        }
+      }else alert('檔案格式不正確');
+    }catch{alert('無法讀取檔案');}
+  };
+  r.readAsText(file);e.target.value='';
+}
+
+/* ══ 字型轉換 ══ */
+function toFontUnicode(str, upperStart, lowerStart, digitStart){
+  return [...str].map(c=>{
+    const code=c.codePointAt(0);
+    if(code>=65&&code<=90) return String.fromCodePoint(upperStart+code-65);
+    if(code>=97&&code<=122) return String.fromCodePoint(lowerStart+code-97);
+    if(digitStart&&code>=48&&code<=57) return String.fromCodePoint(digitStart+code-48);
+    return c;
+  }).join('');
+}
+const SCRIPT_MAP={'A':'\u{1D49C}','B':'\u212C','C':'\u{1D49E}','D':'\u{1D49F}','E':'\u2130','F':'\u2131','G':'\u{1D4A2}','H':'\u210B','I':'\u2110','J':'\u{1D4A5}','K':'\u{1D4A6}','L':'\u2112','M':'\u2133','N':'\u{1D4A9}','O':'\u{1D4AA}','P':'\u{1D4AB}','Q':'\u{1D4AC}','R':'\u211B','S':'\u{1D4AE}','T':'\u{1D4AF}','U':'\u{1D4B0}','V':'\u{1D4B1}','W':'\u{1D4B2}','X':'\u{1D4B3}','Y':'\u{1D4B4}','Z':'\u{1D4B5}','a':'\u{1D4B6}','b':'\u{1D4B7}','c':'\u{1D4B8}','d':'\u{1D4B9}','e':'\u212F','f':'\u{1D4BB}','g':'\u210A','h':'\u{1D4BD}','i':'\u{1D4BE}','j':'\u{1D4BF}','k':'\u{1D4C0}','l':'\u{1D4C1}','m':'\u{1D4C2}','n':'\u{1D4C3}','o':'\u2134','p':'\u{1D4C5}','q':'\u{1D4C6}','r':'\u{1D4C7}','s':'\u{1D4C8}','t':'\u{1D4C9}','u':'\u{1D4CA}','v':'\u{1D4CB}','w':'\u{1D4CC}','x':'\u{1D4CD}','y':'\u{1D4CE}','z':'\u{1D4CF}'};
+const SMALL_CAP={'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ꜰ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'q','r':'ʀ','s':'ꜱ','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ'};
+const CIRCLE_U=[...'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ'];
+const CIRCLE_L=[...'ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ'];
+const SUP_MAP={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','a':'ᵃ','b':'ᵇ','c':'ᶜ','d':'ᵈ','e':'ᵉ','f':'ᶠ','g':'ᵍ','h':'ʰ','i':'ⁱ','j':'ʲ','k':'ᵏ','l':'ˡ','m':'ᵐ','n':'ⁿ','o':'ᵒ','p':'ᵖ','r':'ʳ','s':'ˢ','t':'ᵗ','u':'ᵘ','v':'ᵛ','w':'ʷ','x':'ˣ','y':'ʸ','z':'ᶻ','A':'ᴬ','B':'ᴮ','C':'ᶜ','D':'ᴰ','E':'ᴱ','F':'ᶠ','G':'ᴳ','H':'ᴴ','I':'ᴵ','J':'ᴶ','K':'ᴷ','L':'ᴸ','M':'ᴹ','N':'ᴺ','O':'ᴼ','P':'ᴾ','R':'ᴿ','S':'ˢ','T':'ᵀ','U':'ᵁ','V':'ⱽ','W':'ᵂ'};
+const SUB_MAP={'0':'₀','1':'₁','2':'₂','3':'₃','4':'₄','5':'₅','6':'₆','7':'₇','8':'₈','9':'₉','a':'ₐ','e':'ₑ','h':'ₕ','i':'ᵢ','j':'ⱼ','k':'ₖ','l':'ₗ','m':'ₘ','n':'ₙ','o':'ₒ','p':'ₚ','r':'ᵣ','s':'ₛ','t':'ₜ','u':'ᵤ','v':'ᵥ','x':'ₓ'};
+const FLIP_MAP={'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ƃ','h':'ɥ','i':'ᴉ','j':'ɾ','k':'ʞ','l':'l','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z','A':'∀','B':'𐐒','C':'Ɔ','D':'◖','E':'Ǝ','F':'Ⅎ','G':'פ','H':'H','I':'I','J':'ſ','L':'˥','M':'W','N':'N','O':'O','P':'Ԁ','S':'S','T':'┴','U':'∩','V':'Λ','W':'M','X':'X','Y':'⅄','Z':'Z'};
+const GREEK_MAP={'a':'α','b':'β','c':'ς','d':'δ','e':'ε','f':'ƒ','g':'γ','h':'η','i':'ι','j':'ʝ','k':'κ','l':'λ','m':'μ','n':'η','o':'ο','p':'ρ','q':'q','r':'ɾ','s':'σ','t':'τ','u':'υ','v':'ν','w':'ω','x':'χ','y':'γ','z':'ζ','A':'Α','B':'Β','C':'С','D':'Δ','E':'Ε','F':'F','G':'Γ','H':'Η','I':'Ι','J':'J','K':'Κ','L':'Λ','M':'Μ','N':'Ν','O':'Ο','P':'Ρ','Q':'Q','R':'R','S':'Σ','T':'Τ','U':'Υ','V':'V','W':'W','X':'Χ','Y':'Υ','Z':'Ζ'};
+const KATAKANA_MAP={'a':'ᗩ','b':'乃','c':'ᄃ','d':'ᗡ','e':'モ','f':'ｷ','g':'ム','h':'卄','i':'ﾉ','j':'ﾌ','k':'ズ','l':'し','m':'爪','n':'刀','o':'の','p':'ｱ','q':'ゑ','r':'я','s':'丂','t':'ｲ','u':'凸','v':'√','w':'W','x':'ﾒ','y':'ﾘ','z':'乙'};
+const MIRROR_MAP={'a':'ɒ','b':'d','c':'ɔ','d':'b','e':'ɘ','f':'ʇ','g':'ϱ','h':'ʜ','i':'i','j':'ⱼ','k':'ʞ','l':'l','m':'m','n':'n','o':'o','p':'q','q':'p','r':'ɿ','s':'ƨ','t':'ƚ','u':'u','v':'v','w':'w','x':'x','y':'y','z':'ƹ'};
+
+const FONT_STYLES=[
+  {label:'粗體',         fn:s=>toFontUnicode(s,0x1D400,0x1D41A,0x1D7CE)},
+  {label:'斜體',         fn:s=>toFontUnicode(s,0x1D434,0x1D44E,null)},
+  {label:'粗斜體',       fn:s=>toFontUnicode(s,0x1D468,0x1D482,null)},
+  {label:'無襯線',       fn:s=>toFontUnicode(s,0x1D5A0,0x1D5BA,0x1D7E2)},
+  {label:'無襯線粗體',   fn:s=>toFontUnicode(s,0x1D5D4,0x1D5EE,0x1D7EC)},
+  {label:'無襯線斜體',   fn:s=>toFontUnicode(s,0x1D608,0x1D622,null)},
+  {label:'無襯線粗斜體', fn:s=>toFontUnicode(s,0x1D63C,0x1D656,null)},
+  {label:'等寬',         fn:s=>toFontUnicode(s,0x1D670,0x1D68A,0x1D7F6)},
+  {label:'花體',         fn:s=>[...s].map(c=>SCRIPT_MAP[c]||c).join('')},
+  {label:'粗體花體',     fn:s=>toFontUnicode(s,0x1D4D0,0x1D4EA,null)},
+  {label:'哥德體',       fn:s=>toFontUnicode(s,0x1D504,0x1D51E,null)},
+  {label:'粗體哥德體',   fn:s=>toFontUnicode(s,0x1D56C,0x1D586,null)},
+  {label:'雙線體',       fn:s=>toFontUnicode(s,0x1D538,0x1D552,0x1D7D8)},
+  {label:'全形',         fn:s=>[...s].map(c=>{const code=c.codePointAt(0);return (code>=33&&code<=126)?String.fromCodePoint(code+0xFF01-33):(c===' '?'\u3000':c);}).join('')},
+  {label:'小型大寫',     fn:s=>[...s].map(c=>SMALL_CAP[c.toLowerCase()]||c).join('')},
+  {label:'圓圈',         fn:s=>[...s].map(c=>{const code=c.codePointAt(0);if(code>=65&&code<=90)return CIRCLE_U[code-65];if(code>=97&&code<=122)return CIRCLE_L[code-97];return c;}).join('')},
+  {label:'上標',         fn:s=>[...s].map(c=>SUP_MAP[c]||c).join('')},
+  {label:'下標',         fn:s=>[...s].map(c=>SUB_MAP[c]||c).join('')},
+  {label:'底線',         fn:s=>[...s].map(c=>c+'\u0332').join('')},
+  {label:'雙底線',       fn:s=>[...s].map(c=>c+'\u0333').join('')},
+  {label:'上橫線',       fn:s=>[...s].map(c=>c+'\u0305').join('')},
+  {label:'刪除線',       fn:s=>[...s].map(c=>c+'\u0336').join('')},
+  {label:'波浪底線',     fn:s=>[...s].map(c=>c+'\u0330').join('')},
+  {label:'斜線',         fn:s=>[...s].map(c=>c+'\u0338').join('')},
+  {label:'倒轉',         fn:s=>[...s].reverse().map(c=>FLIP_MAP[c]||c).join('')},
+  {label:'鏡像',         fn:s=>[...s].map(c=>MIRROR_MAP[c]||c).join('')},
+  {label:'希臘體',       fn:s=>[...s].map(c=>GREEK_MAP[c]||c).join('')},
+  {label:'日文風',       fn:s=>[...s].map(c=>KATAKANA_MAP[c.toLowerCase()]||c).join('')},
+  {label:'✦ 分隔',      fn:s=>[...s].join('✦')},
+  {label:'· 分隔',      fn:s=>[...s].join('·')},
+  {label:'★ 分隔',      fn:s=>[...s].join('★')},
+  {label:'° 分隔',      fn:s=>[...s].join('°')},
+  {label:'隱形文字',     fn:s=>'\u2800'.repeat([...s].length)},
+  {label:'Zalgo',       fn:s=>{
+    const above=['\u030d','\u030e','\u0304','\u0305','\u033f','\u0311','\u0306','\u0310','\u0352','\u0357','\u0351','\u0307','\u0308','\u030a','\u0342','\u0300','\u0301','\u030b','\u030f','\u0312','\u0313','\u0314','\u033d','\u0309','\u034a','\u034b','\u034c','\u0303','\u0302','\u030c','\u0350','\u035b'];
+    const below=['\u0316','\u0317','\u0318','\u0319','\u031c','\u031d','\u031e','\u031f','\u0320','\u0324','\u0325','\u0326','\u0329','\u032a','\u032b','\u032c','\u032d','\u032e','\u032f','\u0330','\u0331','\u0332','\u0333','\u0339','\u033a','\u033b','\u033c','\u0345','\u0347','\u0348','\u0349','\u034d','\u034e','\u0353','\u0354','\u0355','\u0356','\u0359','\u035a','\u0323'];
+    const mid=['\u0315','\u031b','\u0358','\u0321','\u0322','\u0327','\u0328','\u0334','\u0335','\u0336','\u034f','\u035c','\u035d','\u035e','\u035f','\u0360','\u0361','\u0362','\u0338','\u0337'];
+    const r=a=>a[Math.floor(Math.random()*a.length)];
+    return [...s].map(c=>{let x=c;for(let i=0;i<2;i++)x+=r(above);for(let i=0;i<2;i++)x+=r(below);if(Math.random()>.5)x+=r(mid);return x;}).join('');
+  }},
+];
+
+function renderFont(main){
+  main.innerHTML=`
+    <div class="font-input-wrap">
+      <input type="text" id="font-input" placeholder="輸入英文字母或數字…" autocomplete="off" maxlength="80" oninput="updateFontList()" onkeyup="toggleClear()">
+      <span class="font-input-clear" id="font-clear" onclick="clearFontInput()">✕</span>
+    </div>
+    <p class="font-hint">純 Unicode 字元，複製後貼到任何地方都能顯示 ✦</p>
+    <div class="font-list" id="font-list">
+      <div class="font-empty">
+        <div class="font-empty-icon">Aa</div>
+        <p>在上方輸入文字，就會出現各種字型</p>
+      </div>
+    </div>`;
+  setTimeout(()=>document.getElementById('font-input').focus(),50);
+}
+
+function updateFontList(){
+  const input=document.getElementById('font-input');
+  const val=input?input.value:'';
+  const list=document.getElementById('font-list');
+  if(!list)return;
+  if(!val.trim()){
+    list.innerHTML=`<div class="font-empty"><div class="font-empty-icon">Aa</div><p>在上方輸入文字，就會出現各種字型</p></div>`;
+    return;
+  }
+  list.innerHTML=FONT_STYLES.map((f,i)=>{
+    const converted=f.fn(val);
+    return `<div class="font-row" data-idx="${i}" onclick="copyFontRow(this,'${encodeURIComponent(converted)}')">
+      <span class="font-row-label">${f.label}</span>
+      <span class="font-row-text">${esc(converted)}</span>
+      <span class="font-row-copy">複製</span>
+    </div>`;
+  }).join('');
+}
+
+function copyFontRow(el, encoded){
+  const text=decodeURIComponent(encoded);
+  navigator.clipboard.writeText(text).then(()=>{
+    el.classList.add('copied-row');
+    setTimeout(()=>el.classList.remove('copied-row'),700);
+    showToast('已複製　'+text.slice(0,12)+(text.length>12?'…':''));
+  });
+}
+
+function toggleClear(){
+  const input=document.getElementById('font-input');
+  const clear=document.getElementById('font-clear');
+  if(input&&clear) clear.style.display=input.value?'block':'none';
+}
+
+function clearFontInput(){
+  const input=document.getElementById('font-input');
+  if(input){input.value='';input.focus();}
+  toggleClear();
+  updateFontList();
+}
+
+/* ══ 顏文字資料 ══ */
+const KAOMOJI = [
+  {
+    "id": "happy",
+    "name": "開心",
+    "icon": "(＾▽＾)",
+    "list": [
+      "(＾▽＾)",
+      "(´▽`)",
+      "( ´∀`)",
+      "(^∀^)",
+      "(*´▽`*)",
+      "(≧▽≦)",
+      "(≧∇≦)/",
+      "＼(^o^)／",
+      "ヽ(^。^)ノ",
+      "ヽ(*´∀`)ノ",
+      "(●´∀`●)",
+      "(*´ω`*)",
+      "(o´▽`o)",
+      "(⌒▽⌒)",
+      "(＾∀＾●)ﾉｼ",
+      "(*^▽^*)",
+      "(✿◠‿◠)",
+      "٩(◕‿◕｡)۶",
+      "ヽ(•‿•)ノ",
+      "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+      "(☆▽☆)",
+      "(*˘︶˘*)",
+      "(｡♥‿♥｡)",
+      "ヽ(´▽`)/",
+      "(o^ ^o)",
+      "d(^_^o)",
+      "(^ω^)",
+      "(*^ω^*)",
+      "(´ω`★)",
+      "(o´ω`o)"
+    ]
+  },
+  {
+    "id": "cute",
+    "name": "可愛",
+    "icon": "(｡◕‿◕｡)",
+    "list": [
+      "(｡◕‿◕｡)",
+      "(｡♥‿♥｡)",
+      "(*´・v・)",
+      "(◕‿◕✿)",
+      "(✿◠‿◠)",
+      "(´｡• ω •｡`)",
+      "(˘▾˘~)",
+      "(ᵔᴥᵔ)",
+      "(=^･ω･^=)",
+      "(=^ ◡ ^=)",
+      "(>^ω^<)",
+      "(=^‥^=)",
+      "(^･o･^)ﾉ\"",
+      "ฅ^•ﻌ•^ฅ",
+      "(◍•ᴗ•◍)",
+      "( ˘ᵕ˘ )",
+      "(｡•̀ᴗ-)✧",
+      "(⁄ ⁄•⁄ω⁄•⁄ ⁄)",
+      "(╹◡╹)",
+      "(*˘◡˘*)",
+      "( ´ ▽ ` )ﾉ",
+      "(ﾉ´ヮ`)ﾉ*: ･ﾟ",
+      "(◠‿◠✿)",
+      "(✯◡✯)",
+      "♡(˃͈ દ ˂͈ ༶ )",
+      "(人 •͈ᴗ•͈)",
+      "(˶˃ ᵕ ˂˶)",
+      "(≧◡≦)",
+      "(´｡• ᵕ •｡`)",
+      "(ʃƪ˘ﻬ˘)"
+    ]
+  },
+  {
+    "id": "love",
+    "name": "愛心",
+    "icon": "(♡°▽°♡)",
+    "list": [
+      "(♡°▽°♡)",
+      "(´ ❛ ᴗ ❛ `)♡",
+      "(˘³˘)♥",
+      "(*´з`)°♡",
+      "(♥ω♥*)",
+      "(●♡∀♡)",
+      "(/▽＼*)｡o○♡",
+      "♡(>ᴗ•)",
+      "( ´艸`)♡",
+      "(～﹃～)~zZ♡",
+      "(ﾉ´з`)ﾉ♡",
+      "(♡ >ω< ♡)",
+      "(´∀`♡)",
+      "ｷﾀ━(ﾟ∀ﾟ)━!♡",
+      "(●´□`)♡",
+      "♡(*´・v・)",
+      "(◍•ᴗ•◍)❤",
+      "♡＼(￣▽￣)/♡",
+      "(づ｡◕‿‿◕｡)づ♡",
+      "(っ˘з(˘⌣˘ )♡",
+      "❤(ˆ‿ˆԅ)",
+      "(♡ ὅ ◡ ὅ )ʃ♡",
+      "(❤ω❤)",
+      "♡⃛(›´ω`‹ )",
+      "(人*´∀`)｡*♡"
+    ]
+  },
+  {
+    "id": "sad",
+    "name": "難過",
+    "icon": "(╥_╥)",
+    "list": [
+      "(╥_╥)",
+      "(T_T)",
+      "(;_;)",
+      "(╯︵╰,)",
+      "(っ˘̩╭╮˘̩)っ",
+      "(ノД`)･ﾟ･",
+      "｡ﾟ(ﾟ´Д`ﾟ)ﾟ｡",
+      "(つд⊂)",
+      "(πーπ)",
+      "(´;ω;`)",
+      "(TдT)",
+      "｡･ﾟﾟ*(>д<)*ﾟﾟ･｡",
+      "(っ- ‸ - ς)",
+      "( ╯°□°）╯",
+      "(/□＼*)・゜",
+      "(ᗒᗣᗕ)՞",
+      "(μ_μ)",
+      "(ಥ_ಥ)",
+      "(っ◞‸◟c)",
+      "(இ﹏இ`｡)",
+      "(╯_╰)",
+      "( ._.)",
+      "(´-ω-`)",
+      "(´д`)",
+      "_(-ω-`_)⌒)_"
+    ]
+  },
+  {
+    "id": "angry",
+    "name": "生氣",
+    "icon": "(╬ Ò﹏Ó)",
+    "list": [
+      "(╬ Ò﹏Ó)",
+      "(ﾒ｀ﾛ´)",
+      "(>﹏<)",
+      "٩(ఠ益ఠ)۶",
+      "(ง •̀_•́)ง",
+      "凸(-_-)凸",
+      "(；￣Д￣)",
+      "(¬_¬)",
+      "(눈_눈)",
+      "(▼へ▼メ)",
+      "(凸＾皿＾)凸",
+      "ε=ε=ε=┌(;￣▽￣)┘",
+      "(ꐦ°᷄д°᷅)",
+      "ヽ(￣д￣;)ノ",
+      "(｡•́︿•̀｡)",
+      "(｀Д´)",
+      "o(>< )o",
+      "( ﾟдﾟ)",
+      "(≖＿≖)✗",
+      "┌∩┐(◣_◢)┌∩┐",
+      "(ง'̀-'́)ง",
+      "(ʘдʘ╬)",
+      "щ(ಠ益ಠщ)",
+      "(눈‸눈)",
+      "(*へ´*)"
+    ]
+  },
+  {
+    "id": "surprised",
+    "name": "驚訝",
+    "icon": "(⊙_⊙)",
+    "list": [
+      "(⊙_⊙)",
+      "Σ(°△°|||)︴",
+      "(ﾟДﾟ;)",
+      "∑(O_O；)",
+      "Σ(っ °Д °;)っ",
+      "(ﾟoﾟ;;)",
+      "( ﾟдﾟ)",
+      "(ﾟOﾟ)",
+      "(°ロ°)",
+      "∑(；ﾟДﾟ)",
+      "Σ(・口・)",
+      "(°△°)",
+      "(ﾟ∀ﾟ)",
+      "( º﹃º )",
+      "(⊙ω⊙)",
+      "(ﾉ)´∀`(ヾ)",
+      "(oﾟvﾟ)ノ",
+      "（＾＾；）",
+      "(ﾟＡﾟ;)",
+      "( ｡ŏ﹏ŏ)",
+      "Σ(￣□￣||)",
+      "(ﾟ∀ﾟ |||)",
+      "(ﾟдﾟ≡ﾟдﾟ)",
+      "∑d(d`*ω`)",
+      "ヾ(ﾟoﾟ)ノ"
+    ]
+  },
+  {
+    "id": "shy",
+    "name": "害羞",
+    "icon": "(๑>◡<๑)",
+    "list": [
+      "(๑>◡<๑)",
+      "(*ﾉωﾉ)",
+      "(⁄ ⁄•⁄ω⁄•⁄ ⁄)",
+      "(*/▽＼*)",
+      "(〃▽〃)",
+      "(〃∀〃)",
+      "(〃ω〃)",
+      "(/ω＼)",
+      "(*´ェ`*)",
+      "(/▽＼)",
+      "(●´∀`●)",
+      "(ˊ . ˋ)",
+      "(///▽///)",
+      "(*´∀`*)",
+      "(,,>﹏<,,)",
+      "(⸝⸝⸝ᵒ̴̶̷̥́ ⌑ ᵒ̴̶̷̣̥̀⸝⸝⸝)",
+      "(˶‾᷄ ⁻̫ ‾᷅˵)",
+      "(*˘︶˘*).｡.:*♡",
+      "(• ε •)",
+      "(/ˍ・、)",
+      "(///ˬ///)♡",
+      "(ゝ﹏ ゝ)",
+      "(●´ω`●)",
+      "( ˘ ³˘)♥",
+      "(⁄⁄•⁄ω⁄•⁄⁄)"
+    ]
+  },
+  {
+    "id": "cool",
+    "name": "耍酷",
+    "icon": "( •_•)",
+    "list": [
+      "( •_•)",
+      "(⌐■_■)",
+      "(•_•) ( •_•)>⌐■-■ (⌐■_■)",
+      "ヾ(￣▽￣)",
+      "(-_-)zzz",
+      "(¬‿¬)",
+      "( ͡° ͜ʖ ͡°)",
+      "(￣ー￣)",
+      "(^_^)v",
+      "(￣3￣)",
+      "( ˘ω˘ )",
+      "(づ￣ ³￣)づ",
+      "ヽ(￣〇￣)ノ",
+      "(～￣▽￣)～",
+      "┐(￣ヘ￣)┌",
+      "(｀・ω・´)",
+      "ᕙ(⇀‸↼‶)ᕗ",
+      "ᕦ(ò_óˇ)ᕤ",
+      "(¬_¬ )",
+      "凸(￣ヘ￣)",
+      "(ง︡'-'︠)ง",
+      "(¬‿¬ )",
+      "(｀・ω・)b",
+      "三( ε:)",
+      "( •̀ᴗ•́ )و"
+    ]
+  },
+  {
+    "id": "greet",
+    "name": "打招呼",
+    "icon": "(＾▽＾)/",
+    "list": [
+      "(＾▽＾)/",
+      "ヾ(＾∇＾)",
+      "(*^▽^)/★*☆♪",
+      "ヾ(*´∀`*)ﾉ",
+      "＼(^▽^@)ﾉ",
+      "(ﾉ´∀`)ﾉ",
+      "o(＞▽＜)o",
+      "ヾ(＾-＾)ノ",
+      "ヾ(@^▽^@)ﾉ",
+      "(・∀・)ノ",
+      "(｡･∀･)ﾉﾞ",
+      "ヾ(^▽^*)))",
+      "(*゜▽゜*)/",
+      "(*´∇`*)ノ",
+      "＼(^▽^)／",
+      "(((o(*ﾟ▽ﾟ*)o)))",
+      "ヾ(☆▽☆)",
+      "(´｡• ω •｡`)ﾉ",
+      "ヽ(*>∇<)ノ",
+      "o(^▽^)o",
+      "(●´∀`●)ﾉ",
+      "ﾟ+｡:.ﾟ(人>_<*)ﾟ.:。+ﾟ",
+      "ヾ(•ω•`)o",
+      "(*＾▽＾)ノ♪",
+      "ヾ(=´▽`=)ﾉ"
+    ]
+  },
+  {
+    "id": "ascii",
+    "name": "大型顏文字",
+    "icon": "┌∩┐",
+    "list": [
+      "╥_╥",
+      "ヽ\n |\n |\n (^ω^)",
+      "   ∧＿∧\n（`・ω・）\n（つ  つ\n ＼,, ＼",
+      " ∩___∩\n| ノ      ヽ\n/  ●   ● |\n|    ( _●_)  ミ\n彡、   |∪|  、`\\\n/ ＿＿| ヽノ /``/\n (____)    (___)",
+      " /\\_/\\\n( o.o )\n > ^ <",
+      "(　`・ω)\n（　`・）\n（　　`）\n（・`　）\n(ω・`　）\n( ・ω・`)",
+      "(ﾉ°□°)ﾉ\n  ︵\n ┻━┻",
+      "┬─┬\nノ( º _ ºノ)",
+      "☆ ～('▽^人)\n.  .  .\n ﾟﾟ｡｡ﾟﾟ｡｡ﾟﾟ\n.  .  .\n ﾟ｡  ﾟ｡",
+      "(\\__/)\n(•ㅅ•)\n/づ🥕",
+      " ∧∧\n(^•^)\no旦o　且",
+      "('ε`*) ﾌﾞﾌﾞﾌﾞ\n ( ∪ ∪\n  と___j__j"
+    ]
+  }
+];
+let activeKaoCat = KAOMOJI[0].id;
+
+function renderKao(main){
+  const cat = KAOMOJI.find(c=>c.id===activeKaoCat) || KAOMOJI[0];
+  const subcatHTML = `<div class="kao-subcats">` +
+    KAOMOJI.map(c=>`<button class="kao-subcat-btn${c.id===activeKaoCat?' active':''}" onclick="switchKaoCat('${c.id}')">${esc(c.icon)} ${esc(c.name)}</button>`).join('') +
+    `</div>`;
+  const gridHTML = `<div class="kao-grid">` +
+    cat.list.map(k=>{
+      const faved = isFaved(k);
+      return `<div class="kao-card" data-kao="${encodeURIComponent(k)}">
+        <span class="kao-heart${faved?' loved':''}" data-kao="${encodeURIComponent(k)}">${faved?'♥':'♡'}</span>
+        <span class="kao-card-text">${esc(k)}</span>
+      </div>`;
+    }).join('') +
+    `</div>`;
+  main.innerHTML = subcatHTML + gridHTML;
+
+  // 單一事件委派，在 grid 層統一判斷
+  const grid = main.querySelector('.kao-grid');
+  if(!grid) return;
+  grid.addEventListener('click', function(e){
+    const heart = e.target.closest('.kao-heart');
+    const card  = e.target.closest('.kao-card');
+
+    if(heart){
+      e.stopPropagation();
+      const sym = decodeURIComponent(heart.dataset.kao);
+      if(isFaved(sym)){
+        favData.categories.forEach(c=>{ c.symbols=c.symbols.filter(s=>s!==sym); });
+        saveFavData();
+        heart.textContent='♡';
+        heart.classList.remove('loved');
+        showToast('已移除收藏');
+      } else {
+        pendingFavSym = sym;
+        openPickCat(sym);
+      }
+      return;
+    }
+
+    if(card){
+      const text = decodeURIComponent(card.dataset.kao);
+      composerAppend(text);
+      card.classList.add('copied-kao');
+      setTimeout(()=>card.classList.remove('copied-kao'),650);
+    }
+  });
+}
+
+/* ══ Unicode 符號頁 ══ */
+function renderSymbols(main){
+  // 處理載入狀態
+  if(curatedState === 'loading' || curatedState === 'idle'){
+    main.innerHTML = `<div class="empty"><div class="empty-icon">⌛</div><p>載入中…</p></div>`;
+    return;
+  }
+  if(curatedState === 'error'){
+    main.innerHTML = `<div class="empty">
+      <div class="empty-icon">⚠</div>
+      <p>資料載入失敗</p>
+      <p style="font-size:11.5px;margin-top:8px;color:var(--text3);line-height:1.7;">
+        請確認 <code style="background:var(--bg3);padding:1px 5px;border-radius:3px;font-size:11px;">data/unicode/greek.json</code> 存在<br>
+        並透過 HTTP 伺服器存取（直接開啟 file:// 會失敗）
+      </p>
+    </div>`;
+    return;
+  }
+  if(CURATED.length === 0){
+    main.innerHTML = `<div class="empty"><p>沒有資料</p></div>`;
+    return;
+  }
+
+  // 側邊欄
+  const sidebarHTML = `
+    <div class="sym-sidebar" id="sym-sidebar">
+      ${CURATED.map(c=>`
+        <div class="sym-nav-item" data-target="sym-sec-${c.id}" onclick="scrollToSection('sym-sec-${c.id}')">
+          <span class="sym-nav-icon">${c.icon}</span>
+          <span>${c.name}</span>
+          <span class="sym-nav-cnt">${c.symbols.length}</span>
+        </div>`).join('')}
+    </div>`;
+
+  // 手機 pill bar
+  const pillHTML = `
+    <div class="sym-pill-bar" id="sym-pill-bar">
+      ${CURATED.map(c=>`
+        <button class="sym-pill" data-target="sym-sec-${c.id}" onclick="scrollToSection('sym-sec-${c.id}')">
+          ${c.icon} ${c.name}
+        </button>`).join('')}
+    </div>`;
+
+  // 所有分類內容
+  const sectionsHTML = CURATED.map(c=>`
+    <div class="sym-section" id="sym-sec-${c.id}">
+      <div class="sym-section-header">
+        <span class="sym-section-title">${c.icon} ${c.name}</span>
+        <span class="sym-section-count">${c.symbols.length} 個</span>
+      </div>
+      <div class="symbol-grid">${c.symbols.map(s=>symWrapHTML(s)).join('')}</div>
+    </div>`).join('');
+
+  main.innerHTML = pillHTML + `
+    <div class="sym-page">
+      ${sidebarHTML}
+      <div class="sym-content" id="sym-content">
+        ${sectionsHTML}
+      </div>
+    </div>`;
+
+  bindClicks();
+  initSymScroll();
+}
+
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const offset = window.innerWidth <= 600 ? 140 : 110;
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({top, behavior:'smooth'});
+}
+
+function initSymScroll(){
+  const sections = CURATED.map(c=>document.getElementById('sym-sec-'+c.id)).filter(Boolean);
+  if(!sections.length) return;
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        // 更新側邊欄
+        document.querySelectorAll('.sym-nav-item').forEach(el=>{
+          el.classList.toggle('active', el.dataset.target===id);
+        });
+        // 更新 pill bar
+        document.querySelectorAll('.sym-pill').forEach(el=>{
+          el.classList.toggle('active', el.dataset.target===id);
+          if(el.dataset.target===id){
+            el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+          }
+        });
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+
+  sections.forEach(s=>observer.observe(s));
+}
+
+/* ══ Switch main tab ══ */
+function switchKaoCat(id){
+  activeKaoCat=id;
+  const main=document.getElementById('main');
+  renderKao(main);
+}
+
+function switchTab(id){
+  // __sym 代表 Unicode 頁，若已載入資料則指向第一個分類，否則用 '__sym' 當佔位符
+  if(id==='__sym') id = activeMainTab && CURATED.some(c=>c.id===activeMainTab) ? activeMainTab : (CURATED[0]?.id || '__sym');
+  activeMainTab=id;searchMode=false;
+  document.getElementById('search').value='';
+  render();
+}
+
+/* ══ Composer ══ */
+function composerAppend(sym){
+  composerRaw += sym;
+  // 同步桌面版和手機版輸入欄
+  const display = composerRaw.replace(/\n/g, ' ');
+  const desktop = document.getElementById('composer');
+  const mobile = document.getElementById('composer-mobile');
+  if(desktop) desktop.value = display;
+  if(mobile) mobile.value = display;
+  updateComposerState();
+  // 只複製這一個符號
+  navigator.clipboard.writeText(sym).then(()=>{
+    const preview = sym.replace(/\n/g,' ').slice(0,15);
+    showToast('已複製　' + preview);
+  });
+}
+
+function updateComposerState(){
+  const hasContent = composerRaw.trim().length > 0;
+  ['composer-save','composer-save-mobile'].forEach(id=>{
+    const btn = document.getElementById(id);
+    if(btn) btn.disabled = !hasContent;
+  });
+  const clearBtn = document.getElementById('composer-clear');
+  if(clearBtn) clearBtn.style.opacity = hasContent ? '1' : '0.4';
+}
+
+function clearComposer(){
+  composerRaw = '';
+  const desktop = document.getElementById('composer');
+  const mobile = document.getElementById('composer-mobile');
+  if(desktop){ desktop.value = ''; desktop.focus(); }
+  if(mobile) mobile.value = '';
+  updateComposerState();
+}
+
+function clearComposerMobile(){
+  composerRaw = '';
+  const desktop = document.getElementById('composer');
+  const mobile = document.getElementById('composer-mobile');
+  if(desktop) desktop.value = '';
+  if(mobile){ mobile.value = ''; }
+  updateComposerState();
+}
+
+function saveComposer(){
+  if(!composerRaw.trim()) return;
+  pendingFavSym = composerRaw;
+  openPickCat(composerRaw);
+}
+
+function showHideMobileComposer(){
+  const bar = document.getElementById('mobile-composer-bar');
+  if(!bar) return;
+  // 只在 Unicode 頁顯示手機版輸入欄
+  const isSymPage = CURATED.some(c=>c.id===activeMainTab) || activeMainTab==='__sym';
+  bar.style.display = isSymPage ? 'flex' : 'none';
+}
+
+/* ══ Toast ══ */
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1800);
+}
+
+/* ══ Search ══ */
+document.getElementById('composer').addEventListener('input', function(){
+  composerRaw = this.value;
+  const mobile = document.getElementById('composer-mobile');
+  if(mobile) mobile.value = this.value;
+  updateComposerState();
+});
+document.getElementById('search').addEventListener('input',function(){
+  if(!this.value.trim()){searchMode=false;render();return;}
+  searchMode=true;renderTabs();renderMain();
+});
+
+/* ══ Modal backdrop / keyboard ══ */
+['modal-pick','modal-newcat','modal-addsym'].forEach(id=>{
+  document.getElementById(id).addEventListener('click',function(e){
+    if(e.target===this){
+      this.classList.remove('open');
+      if(id==='modal-pick') pendingFavSym=null;
+    }
+  });
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    ['modal-pick','modal-newcat','modal-addsym'].forEach(id=>document.getElementById(id).classList.remove('open'));
+    pendingFavSym=null;
+  }
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search').focus();}
+});
+
+render();
+</script>
+</body>
+</html>

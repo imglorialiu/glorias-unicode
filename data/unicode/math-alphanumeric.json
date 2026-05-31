@@ -1,0 +1,14 @@
+{
+  "id": "math-alphanumeric",
+  "name": "數學字母符號（Math Alphanumeric）",
+  "name_en": "Mathematical Alphanumeric Symbols",
+  "count": 2,
+  "ranges": [
+    "U+1D400-U+1D7FF",
+    "U+1EE00-U+1EEFF"
+  ],
+  "symbols": [
+    "𞻰",
+    "𞻱"
+  ]
+}
