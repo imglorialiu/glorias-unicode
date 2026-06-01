@@ -21,6 +21,7 @@ Have you ever wanted to add a little flair to your posts, messages, or usernames
 
 This is a work-in-progress tool designed to let anyone:
 - 🔍 **Browse** curated pure-Unicode symbols (no display issues across systems)
+- 🔤 **Transform** any text into Unicode font variants (bold, italic, sans-serif, etc.)
 - 🎨 **Compose** your own kaomoji
 - 💾 **Save** favorite symbols and kaomoji
 - 📤 **Export / Import** your personalized symbol collections
@@ -46,12 +47,13 @@ Every symbol in the database is **manually curated**. Anything that doesn't rend
 ## 🎨 Features
 
 ### Currently Available
-- ✅ 30+ categories of curated Unicode symbols (ancient scripts, modern languages, technical symbols, writing systems, etc.)
-- ✅ Favorites system (save symbols you love)
-- ✅ Custom categories (build your own symbol sets)
-- ✅ Manual symbol entry
-- ✅ Category pack export / import (community sharing)
-- ✅ Responsive design (mobile, tablet, desktop)
+- ✅ **30+ categories** of curated Unicode symbols (ancient scripts, modern languages, technical symbols, writing systems, etc.)
+- ✅ **Font transformer**: Convert any text into Unicode font variants (bold, italic, bold-italic, sans-serif, and more) — one-click copy
+- ✅ **Favorites system** (save symbols across tabs)
+- ✅ **Custom categories** (build your own symbol sets)
+- ✅ **Manual symbol entry**
+- ✅ **Category pack export / import** (community sharing)
+- ✅ **Responsive design** (mobile, tablet, desktop)
 
 ### Design Principles
 - 🚫 **No ads, non-commercial**
@@ -63,7 +65,7 @@ Every symbol in the database is **manually curated**. Anything that doesn't rend
 
 ## 🗺️ Roadmap
 
-This project is just getting started. The symbol library is just the **appetizer** — the real main course is the kaomoji tool.
+This project is just getting started. The symbol library and font transformer are just the **appetizers** — the real main course is the kaomoji tool.
 
 ### Short-term
 - [ ] Symbol search (by keyword, by context)
@@ -207,6 +209,7 @@ MIT License — Free to use, modify, and distribute. Please keep the author attr
 
 這是一個正在開發中的工具,目標是讓任何人都能:
 - 🔍 **瀏覽**精選過的純 Unicode 符號(不用擔心顯示問題)
+- 🔤 **轉換**任何文字為各種 Unicode 字型變體(粗體、斜體、無襯線等)
 - 🎨 **組裝**自己的顏文字
 - 💾 **收藏**喜歡的符號和顏文字
 - 📤 **匯出/匯入**自己的個人化符號集
@@ -232,12 +235,13 @@ MIT License — Free to use, modify, and distribute. Please keep the author attr
 ## 🎨 功能特色
 
 ### 目前已有
-- ✅ 30+ 個分類的精選 Unicode 符號庫(古文字、現代語言、技術符號、書寫系統等)
-- ✅ 收藏功能(儲存喜歡的符號)
-- ✅ 自訂分類(建立自己的符號集)
-- ✅ 手動新增符號
-- ✅ 分類包匯出 / 匯入(社群分享)
-- ✅ 響應式設計(手機、平板、桌機通用)
+- ✅ **30+ 個分類**的精選 Unicode 符號庫(古文字、現代語言、技術符號、書寫系統等)
+- ✅ **字型轉換工具**:把任何文字轉成 Unicode 字型變體(粗體、斜體、粗斜體、無襯線等),一鍵複製
+- ✅ **收藏功能**(跨分頁儲存喜歡的符號)
+- ✅ **自訂分類**(建立自己的符號集)
+- ✅ **手動新增符號**
+- ✅ **分類包匯出 / 匯入**(社群分享)
+- ✅ **響應式設計**(手機、平板、桌機通用)
 
 ### 設計理念
 - 🚫 **無廣告、非營利**
@@ -249,7 +253,7 @@ MIT License — Free to use, modify, and distribute. Please keep the author attr
 
 ## 🗺️ Roadmap
 
-這個專案才剛開始。符號庫只是**前菜**,真正的主菜是顏文字工具。
+這個專案才剛開始。符號庫和字型轉換只是**前菜**,真正的主菜是顏文字工具。
 
 ### 短期
 - [ ] 符號搜尋功能(按關鍵字、按情境)
@@ -360,7 +364,7 @@ index.html              ← 介面與互動邏輯(HTML + CSS + JS)
 
 ## 📄 License
 
-MIT License — 自由使用、修改、散布,但請保留作者 GlORiA 資訊。
+MIT License — 自由使用、修改、散布,但請保留作者資訊。
 
 ---
 
