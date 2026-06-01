@@ -1,6 +1,6 @@
 {
   "id": "braille",
-  "name": "盲文（Braille Patterns）",
+  "name": "盲文",
   "name_en": "Braille Patterns",
   "count": 256,
   "ranges": [

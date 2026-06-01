@@ -1,7 +1,7 @@
 {
-  "id": "basic-latin-ascii",
-  "name": "基本拉丁與 ASCII",
-  "name_en": "Basic Latin (ASCII)",
+  "id": "basic-keyboard",
+  "name": "基本鍵盤",
+  "name_en": "Basic Keyboard",
   "count": 94,
   "ranges": [
     "U+0021-U+007E"

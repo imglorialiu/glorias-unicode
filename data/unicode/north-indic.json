@@ -1,16 +1,12 @@
 {
-  "id": "devanagari-family",
-  "name": "北印度系文字（Devanagari、Bengali 等）",
-  "name_en": "Devanagari & North Indic",
+  "id": "north-indic",
+  "name": "北印度系文字",
+  "name_en": "North Indic Scripts",
   "count": 402,
   "ranges": [
-    "U+0900-U+097F",
-    "U+0980-U+09FF",
-    "U+0A00-U+0A7F",
-    "U+0A80-U+0AFF",
-    "U+0B00-U+0B7F",
-    "U+1CD0-U+1CFF",
-    "U+A8E0-U+A8FF"
+    "U+0900-U+0AF9",
+    "U+1CD0-U+1CF9",
+    "U+A8FE-U+A8FF"
   ],
   "symbols": [
     "ऀ",

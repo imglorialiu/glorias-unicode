@@ -1,22 +1,15 @@
 {
-  "id": "letterlike-number-forms",
-  "name": "似字母與數字符號（Letterlike & Number Forms）",
-  "name_en": "Letterlike Symbols & Number Forms",
+  "id": "letterlike-numbers",
+  "name": "似字母|數字",
+  "name_en": "Letterlike & Number Forms",
   "count": 976,
   "ranges": [
-    "U+2100-U+214F",
-    "U+2150-U+218F",
+    "U+2100-U+218B",
     "U+2460-U+24FF",
-    "U+3200-U+32FF",
-    "U+3300-U+33FF",
-    "U+1F100-U+1F1FF",
-    "U+1F200-U+1F2FF",
-    "U+A830-U+A83F",
-    "U+10E60-U+10E7F",
-    "U+1D2E0-U+1D2FF",
-    "U+1D360-U+1D37F",
-    "U+1EC70-U+1ECBF",
-    "U+1ED00-U+1ED4F"
+    "U+3200-U+33FE",
+    "U+A830-U+A839",
+    "U+1D360-U+1D371",
+    "U+1F100-U+1F248"
   ],
   "symbols": [
     "℀",

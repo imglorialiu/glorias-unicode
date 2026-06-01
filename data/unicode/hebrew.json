@@ -1,10 +1,10 @@
 {
   "id": "hebrew",
-  "name": "希伯來文（Hebrew）",
+  "name": "希伯來文",
   "name_en": "Hebrew",
   "count": 145,
   "ranges": [
-    "U+0590-U+05FF",
+    "U+0591-U+05F4",
     "U+FB00-U+FB4F"
   ],
   "symbols": [

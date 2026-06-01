@@ -1,22 +1,13 @@
 {
   "id": "other-ancient",
-  "name": "其他古文字（Old Turkic、Hungarian 等）",
+  "name": "其他古文字",
   "name_en": "Other Ancient Scripts",
   "count": 612,
   "ranges": [
-    "U+10350-U+1037F",
-    "U+10400-U+1044F",
-    "U+10450-U+1047F",
-    "U+10480-U+104AF",
-    "U+10500-U+1052F",
-    "U+10530-U+1056F",
-    "U+10570-U+105BF",
-    "U+10C00-U+10C4F",
-    "U+10C80-U+10CFF",
-    "U+2C00-U+2C5F",
-    "U+1E000-U+1E02F",
-    "U+16FE0-U+16FFF",
-    "U+17000-U+187FF"
+    "U+2C00-U+2C5E",
+    "U+10350-U+1056F",
+    "U+10C00-U+10CFF",
+    "U+1E000-U+1E02A"
   ],
   "symbols": [
     "Ⰰ",

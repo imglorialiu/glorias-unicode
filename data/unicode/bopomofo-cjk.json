@@ -1,18 +1,11 @@
 {
-  "id": "bopomofo-cjk-symbols",
-  "name": "注音與 CJK 符號（Bopomofo & CJK Sym）",
+  "id": "bopomofo-cjk",
+  "name": "注音|CJK",
   "name_en": "Bopomofo & CJK Symbols",
   "count": 336,
   "ranges": [
-    "U+3000-U+303F",
-    "U+3100-U+312F",
-    "U+3190-U+319F",
-    "U+31A0-U+31BF",
-    "U+FE10-U+FE1F",
-    "U+FE30-U+FE4F",
-    "U+FE50-U+FE6F",
-    "U+FF00-U+FFEF",
-    "U+FFF0-U+FFFF"
+    "U+3000-U+31BB",
+    "U+FE10-U+FFEE"
   ],
   "symbols": [
     "　",

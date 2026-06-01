@@ -1,13 +1,10 @@
 {
-  "id": "geometry-box",
-  "name": "幾何圖形與製表（Geometry & Box）",
-  "name_en": "Geometric Shapes & Box Drawing",
+  "id": "geometry",
+  "name": "幾何圖形",
+  "name_en": "Geometric Shapes",
   "count": 256,
   "ranges": [
-    "U+2500-U+257F",
-    "U+2580-U+259F",
-    "U+25A0-U+25FF",
-    "U+1F780-U+1F7FF"
+    "U+2500-U+25FF"
   ],
   "symbols": [
     "─",

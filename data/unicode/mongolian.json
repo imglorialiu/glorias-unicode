@@ -1,12 +1,12 @@
 {
   "id": "mongolian",
-  "name": "蒙古文（Mongolian、Phags-pa）",
+  "name": "蒙古文",
   "name_en": "Mongolian",
   "count": 227,
   "ranges": [
-    "U+1800-U+18AF",
-    "U+A840-U+A87F",
-    "U+11660-U+1167F"
+    "U+1800-U+18AA",
+    "U+A840-U+A877",
+    "U+11660-U+1166C"
   ],
   "symbols": [
     "᠀",

@@ -1,16 +1,14 @@
 {
-  "id": "ethiopic-bamum",
-  "name": "衣索比亞文與相關（Ethiopic & Bamum）",
-  "name_en": "Ethiopic & Bamum",
+  "id": "ethiopic",
+  "name": "衣索比亞文",
+  "name_en": "Ethiopic",
   "count": 1151,
   "ranges": [
-    "U+1200-U+137F",
-    "U+1380-U+139F",
-    "U+2D80-U+2DDF",
-    "U+AB00-U+AB2F",
-    "U+A6A0-U+A6FF",
-    "U+16800-U+16A3F",
-    "U+1E7E0-U+1E7FF"
+    "U+1200-U+1399",
+    "U+2D80-U+2DDE",
+    "U+A6A0-U+A6F7",
+    "U+AB01-U+AB2E",
+    "U+16800-U+16A38"
   ],
   "symbols": [
     "ሀ",

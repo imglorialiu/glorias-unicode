@@ -1,11 +1,11 @@
 {
   "id": "greek",
-  "name": "希臘文（Greek）",
+  "name": "希臘文",
   "name_en": "Greek",
   "count": 361,
   "ranges": [
     "U+0370-U+03FF",
-    "U+1F00-U+1FFF"
+    "U+1F00-U+1FFE"
   ],
   "symbols": [
     "Ͱ",

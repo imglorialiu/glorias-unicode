@@ -1,7 +1,7 @@
 {
   "id": "ipa-phonetic",
-  "name": "國際音標與發音符號(IPA & Phonetic)",
-  "name_en": "IPA & Phonetic Extensions",
+  "name": "國際音標|發音",
+  "name_en": "IPA & Phonetic",
   "count": 398,
   "ranges": [
     "U+0250-U+02FF",

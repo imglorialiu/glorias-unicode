@@ -1,16 +1,14 @@
 {
   "id": "latin-extensions",
-  "name": "拉丁文擴展集（Latin Extensions）",
+  "name": "拉丁文擴展集",
   "name_en": "Latin Extensions",
-  "count": 733,
+  "count": 728,
   "ranges": [
-    "U+0080-U+024F",
+    "U+00A0-U+024F",
     "U+1E00-U+1EFF",
-    "U+2C60-U+2C7F",
-    "U+A720-U+A7FF",
-    "U+AB30-U+AB6F",
-    "U+10780-U+107BF",
-    "U+1DF00-U+1DFFF"
+    "U+2C60-U+2C7D",
+    "U+A720-U+A7B5",
+    "U+AB53-U+AB53"
   ],
   "symbols": [
     " ",
@@ -739,12 +737,7 @@
     "Ꞥ",
     "Ɪ",
     "ꞯ",
-    "Ꭓ",
-    "Ꞵ",
     "ꞵ",
-    "Ꞷ",
-    "ꞷ",
-    "ꟙ",
     "ꭓ"
   ]
 }

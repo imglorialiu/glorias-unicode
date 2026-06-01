@@ -1,21 +1,11 @@
 {
   "id": "ancient-persian-silkroad",
-  "name": "古波斯與絲路文字",
+  "name": "古波斯|絲路文字",
   "name_en": "Ancient Persian & Silk Road",
   "count": 313,
   "ranges": [
-    "U+103A0-U+103DF",
-    "U+10A00-U+10A5F",
-    "U+10AC0-U+10AFF",
-    "U+10B00-U+10B3F",
-    "U+10B40-U+10B5F",
-    "U+10B60-U+10B7F",
-    "U+10B80-U+10BAF",
-    "U+10F00-U+10F2F",
-    "U+10F30-U+10F6F",
-    "U+10F70-U+10FAF",
-    "U+10FB0-U+10FDF",
-    "U+10FE0-U+10FFF"
+    "U+103A0-U+103D5",
+    "U+10A00-U+10BAF"
   ],
   "symbols": [
     "𐎠",

@@ -1,10 +1,11 @@
 {
   "id": "sup-subscripts",
-  "name": "上下標數字字母（Sup & Subscripts）",
+  "name": "上下標",
   "name_en": "Superscripts & Subscripts",
-  "count": 42,
+  "count": 44,
   "ranges": [
-    "U+2070-U+209F"
+    "U+2070-U+209C",
+    "U+1EEF0-U+1EEF1"
   ],
   "symbols": [
     "⁰",
@@ -48,6 +49,8 @@
     "ₙ",
     "ₚ",
     "ₛ",
-    "ₜ"
+    "ₜ",
+    "𞻰",
+    "𞻱"
   ]
 }

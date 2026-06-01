@@ -1,13 +1,11 @@
 {
   "id": "egyptian-anatolian",
-  "name": "埃及與安那托利亞象形文字",
+  "name": "埃及|安那托利亞象形文字",
   "name_en": "Egyptian & Anatolian Hieroglyphs",
   "count": 1187,
   "ranges": [
-    "U+10980-U+1099F",
-    "U+109A0-U+109FF",
-    "U+13000-U+1342F",
-    "U+14400-U+1467F"
+    "U+10980-U+109FF",
+    "U+13000-U+1342E"
   ],
   "symbols": [
     "𐦀",

@@ -1,11 +1,11 @@
 {
   "id": "punctuation",
-  "name": "標點符號（Punctuation）",
+  "name": "標點符號",
   "name_en": "Punctuation",
   "count": 121,
   "ranges": [
-    "U+2000-U+206F",
-    "U+2E00-U+2E7F"
+    "U+2000-U+205F",
+    "U+2E00-U+2E41"
   ],
   "symbols": [
     " ",

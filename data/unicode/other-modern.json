@@ -1,23 +1,16 @@
 {
   "id": "other-modern",
-  "name": "其他現代文字（Lisu、Yi、Hmong 等）",
+  "name": "現代文字",
   "name_en": "Other Modern Scripts",
   "count": 1798,
   "ranges": [
-    "U+A000-U+A48F",
-    "U+A490-U+A4CF",
-    "U+A4D0-U+A4FF",
-    "U+11FB0-U+11FBF",
     "U+1C50-U+1C7F",
+    "U+A000-U+A4FF",
+    "U+10D00-U+10D39",
+    "U+16A40-U+16B8F",
     "U+16F00-U+16F9F",
-    "U+16B00-U+16B8F",
     "U+1E100-U+1E14F",
-    "U+1E290-U+1E2BF",
-    "U+1E2C0-U+1E2FF",
-    "U+1E4D0-U+1E4FF",
-    "U+10D00-U+10D3F",
-    "U+16A40-U+16A6F",
-    "U+16A70-U+16ACF"
+    "U+1E2C0-U+1E2FF"
   ],
   "symbols": [
     "᱐",

@@ -1,14 +1,10 @@
 {
-  "id": "tamil-family",
-  "name": "南印度系文字（Tamil、Telugu 等）",
-  "name_en": "Tamil & South Indic",
+  "id": "south-indic",
+  "name": "南印度系文字",
+  "name_en": "South Indic Scripts",
   "count": 511,
   "ranges": [
-    "U+0B80-U+0BFF",
-    "U+0C00-U+0C7F",
-    "U+0C80-U+0CFF",
-    "U+0D00-U+0D7F",
-    "U+0D80-U+0DFF",
+    "U+0B82-U+0DF4",
     "U+11FC0-U+11FFF"
   ],
   "symbols": [

@@ -1,12 +1,10 @@
 {
   "id": "musical",
-  "name": "音樂符號（Musical）",
+  "name": "音樂符號",
   "name_en": "Musical Symbols",
   "count": 30,
   "ranges": [
-    "U+1D000-U+1D0FF",
-    "U+1D100-U+1D1FF",
-    "U+1CF00-U+1CFCF"
+    "U+1D100-U+1D1CE"
   ],
   "symbols": [
     "𝄀",

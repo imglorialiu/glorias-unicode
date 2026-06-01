@@ -1,10 +1,10 @@
 {
   "id": "tibetan",
-  "name": "藏文（Tibetan）",
+  "name": "藏文",
   "name_en": "Tibetan",
   "count": 210,
   "ranges": [
-    "U+0F00-U+0FFF"
+    "U+0F00-U+0FDA"
   ],
   "symbols": [
     "ༀ",

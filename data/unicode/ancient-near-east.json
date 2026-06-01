@@ -1,17 +1,11 @@
 {
   "id": "ancient-near-east",
-  "name": "古中東與腓尼基文字",
-  "name_en": "Ancient Near Eastern Scripts",
+  "name": "古中東|腓尼基文字",
+  "name_en": "Ancient Near Eastern",
   "count": 222,
   "ranges": [
-    "U+10840-U+1085F",
-    "U+10860-U+1087F",
-    "U+10880-U+108AF",
-    "U+108E0-U+108FF",
-    "U+10900-U+1091F",
-    "U+10A60-U+10A7F",
-    "U+10A80-U+10A9F",
-    "U+10E80-U+10EBF"
+    "U+10840-U+1091F",
+    "U+10A60-U+10A9F"
   ],
   "symbols": [
     "𐡀",

@@ -1,11 +1,10 @@
 {
-  "id": "duployan-signwriting",
-  "name": "速記與其他符號文字（Duployan、SignWriting）",
-  "name_en": "Duployan & SignWriting",
+  "id": "shorthand-others",
+  "name": "速記|其他符號",
+  "name_en": "Shorthand & Other Symbols",
   "count": 142,
   "ranges": [
-    "U+1BC00-U+1BC9F",
-    "U+1D800-U+1DAAF"
+    "U+1BC00-U+1BC9F"
   ],
   "symbols": [
     "𛰀",

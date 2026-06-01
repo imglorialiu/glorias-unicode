@@ -1,13 +1,11 @@
 {
   "id": "cuneiform",
-  "name": "楔形文字（Cuneiform）",
+  "name": "楔形文字",
   "name_en": "Cuneiform",
   "count": 1254,
   "ranges": [
     "U+10380-U+1039F",
-    "U+12000-U+123FF",
-    "U+12400-U+1247F",
-    "U+12480-U+1254F"
+    "U+12000-U+12543"
   ],
   "symbols": [
     "𐎀",

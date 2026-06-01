@@ -1,15 +1,13 @@
 {
-  "id": "other-african",
-  "name": "其他非洲文字（Adlam、Tifinagh、Vai 等）",
-  "name_en": "Other African Scripts",
+  "id": "african",
+  "name": "非洲文字",
+  "name_en": "African Scripts",
   "count": 690,
   "ranges": [
     "U+2D30-U+2D7F",
-    "U+A500-U+A63F",
-    "U+16AD0-U+16AFF",
-    "U+16E40-U+16E9F",
-    "U+1E800-U+1E8DF",
-    "U+1E900-U+1E95F"
+    "U+A500-U+A62B",
+    "U+16AD0-U+16AF5",
+    "U+1E800-U+1E95F"
   ],
   "symbols": [
     "ⴰ",

@@ -1,14 +1,13 @@
 {
   "id": "americas-indigenous",
-  "name": "美洲原住民文字（Cherokee、Canadian 等）",
+  "name": "美洲原住民文字",
   "name_en": "Indigenous American Scripts",
   "count": 951,
   "ranges": [
-    "U+13A0-U+13FF",
-    "U+1400-U+167F",
-    "U+18B0-U+18FF",
+    "U+13A0-U+167F",
+    "U+18B0-U+18F5",
     "U+AB70-U+ABBF",
-    "U+104B0-U+104FF"
+    "U+104B0-U+104FB"
   ],
   "symbols": [
     "Ꭰ",

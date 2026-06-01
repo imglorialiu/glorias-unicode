@@ -1,300 +1,293 @@
 {
-  "total_categories": 42,
-  "total_symbols": 23013,
+  "total_categories": 41,
+  "total_symbols": 22598,
   "categories": [
     {
-      "id": "latin-extensions",
-      "name": "拉丁文擴展集（Latin Extensions）",
-      "name_en": "Latin Extensions",
-      "count": 733,
-      "file": "latin-extensions.json"
+      "id": "basic-keyboard",
+      "name": "基本鍵盤",
+      "name_en": "Basic Keyboard",
+      "count": 94,
+      "file": "basic-keyboard.json"
+    },
+    {
+      "id": "arrows",
+      "name": "箭頭系列",
+      "name_en": "Arrows",
+      "count": 348,
+      "file": "arrows.json"
+    },
+    {
+      "id": "geometry",
+      "name": "幾何圖形",
+      "name_en": "Geometric Shapes",
+      "count": 256,
+      "file": "geometry.json"
+    },
+    {
+      "id": "math",
+      "name": "數學符號",
+      "name_en": "Mathematical Symbols",
+      "count": 686,
+      "file": "math.json"
+    },
+    {
+      "id": "technical-misc",
+      "name": "技術|雜項符號",
+      "name_en": "Technical & Miscellaneous",
+      "count": 738,
+      "file": "technical-misc.json"
+    },
+    {
+      "id": "letterlike-numbers",
+      "name": "似字母|數字",
+      "name_en": "Letterlike & Number Forms",
+      "count": 976,
+      "file": "letterlike-numbers.json"
+    },
+    {
+      "id": "sup-subscripts",
+      "name": "上下標",
+      "name_en": "Superscripts & Subscripts",
+      "count": 44,
+      "file": "sup-subscripts.json"
+    },
+    {
+      "id": "punctuation",
+      "name": "標點符號",
+      "name_en": "Punctuation",
+      "count": 121,
+      "file": "punctuation.json"
+    },
+    {
+      "id": "musical",
+      "name": "音樂符號",
+      "name_en": "Musical Symbols",
+      "count": 30,
+      "file": "musical.json"
+    },
+    {
+      "id": "currency",
+      "name": "貨幣符號",
+      "name_en": "Currency Symbols",
+      "count": 32,
+      "file": "currency.json"
+    },
+    {
+      "id": "shorthand-others",
+      "name": "速記|其他符號",
+      "name_en": "Shorthand & Other Symbols",
+      "count": 142,
+      "file": "shorthand-others.json"
     },
     {
       "id": "ipa-phonetic",
-      "name": "國際音標與發音符號(IPA & Phonetic)",
-      "name_en": "IPA & Phonetic Extensions",
+      "name": "國際音標|發音",
+      "name_en": "IPA & Phonetic",
       "count": 398,
       "file": "ipa-phonetic.json"
     },
     {
       "id": "combining-marks",
-      "name": "組合附加符號（Combining Marks）",
+      "name": "組合附加符號",
       "name_en": "Combining Diacritical Marks",
       "count": 175,
       "file": "combining-marks.json"
     },
     {
-      "id": "greek",
-      "name": "希臘文（Greek）",
-      "name_en": "Greek",
-      "count": 361,
-      "file": "greek.json"
+      "id": "games-divination",
+      "name": "遊戲|占卜符號",
+      "name_en": "Game & Divination Symbols",
+      "count": 470,
+      "file": "games-divination.json"
     },
     {
-      "id": "cyrillic",
-      "name": "西里爾文（Cyrillic）",
-      "name_en": "Cyrillic",
-      "count": 432,
-      "file": "cyrillic.json"
+      "id": "braille",
+      "name": "盲文",
+      "name_en": "Braille Patterns",
+      "count": 256,
+      "file": "braille.json"
     },
     {
-      "id": "armenian-georgian",
-      "name": "高加索文字（Armenian、Georgian）",
-      "name_en": "Armenian & Georgian",
-      "count": 223,
-      "file": "armenian-georgian.json"
-    },
-    {
-      "id": "hebrew",
-      "name": "希伯來文（Hebrew）",
-      "name_en": "Hebrew",
-      "count": 145,
-      "file": "hebrew.json"
-    },
-    {
-      "id": "arabic",
-      "name": "阿拉伯文與相關（Arabic & Related）",
-      "name_en": "Arabic & Related",
-      "count": 807,
-      "file": "arabic.json"
-    },
-    {
-      "id": "devanagari-family",
-      "name": "北印度系文字（Devanagari、Bengali 等）",
-      "name_en": "Devanagari & North Indic",
-      "count": 402,
-      "file": "devanagari-family.json"
-    },
-    {
-      "id": "tamil-family",
-      "name": "南印度系文字（Tamil、Telugu 等）",
-      "name_en": "Tamil & South Indic",
-      "count": 511,
-      "file": "tamil-family.json"
-    },
-    {
-      "id": "southeast-asian",
-      "name": "東南亞文字（Thai、Khmer、Myanmar 等）",
-      "name_en": "Southeast Asian Scripts",
-      "count": 1814,
-      "file": "southeast-asian.json"
-    },
-    {
-      "id": "hangul-jamo",
-      "name": "韓文（Hangul Jamo）",
-      "name_en": "Hangul Jamo",
-      "count": 350,
-      "file": "hangul-jamo.json"
-    },
-    {
-      "id": "kana",
-      "name": "日文假名（Kana）",
-      "name_en": "Japanese Kana",
-      "count": 203,
-      "file": "kana.json"
-    },
-    {
-      "id": "bopomofo-cjk-symbols",
-      "name": "注音與 CJK 符號（Bopomofo & CJK Sym）",
+      "id": "bopomofo-cjk",
+      "name": "注音|CJK",
       "name_en": "Bopomofo & CJK Symbols",
       "count": 336,
-      "file": "bopomofo-cjk-symbols.json"
+      "file": "bopomofo-cjk.json"
     },
     {
-      "id": "ethiopic-bamum",
-      "name": "衣索比亞文與相關（Ethiopic & Bamum）",
-      "name_en": "Ethiopic & Bamum",
-      "count": 1151,
-      "file": "ethiopic-bamum.json"
-    },
-    {
-      "id": "other-african",
-      "name": "其他非洲文字（Adlam、Tifinagh、Vai 等）",
-      "name_en": "Other African Scripts",
-      "count": 690,
-      "file": "other-african.json"
-    },
-    {
-      "id": "americas-indigenous",
-      "name": "美洲原住民文字（Cherokee、Canadian 等）",
-      "name_en": "Indigenous American Scripts",
-      "count": 951,
-      "file": "americas-indigenous.json"
+      "id": "cjk-radicals",
+      "name": "部首|筆畫",
+      "name_en": "CJK Radicals & Strokes",
+      "count": 177,
+      "file": "cjk-radicals.json"
     },
     {
       "id": "mongolian",
-      "name": "蒙古文（Mongolian、Phags-pa）",
+      "name": "蒙古文",
       "name_en": "Mongolian",
       "count": 227,
       "file": "mongolian.json"
     },
     {
       "id": "tibetan",
-      "name": "藏文（Tibetan）",
+      "name": "藏文",
       "name_en": "Tibetan",
       "count": 210,
       "file": "tibetan.json"
     },
     {
-      "id": "other-modern",
-      "name": "其他現代文字（Lisu、Yi、Hmong 等）",
-      "name_en": "Other Modern Scripts",
-      "count": 1798,
-      "file": "other-modern.json"
+      "id": "hangul",
+      "name": "韓文",
+      "name_en": "Hangul",
+      "count": 350,
+      "file": "hangul.json"
+    },
+    {
+      "id": "kana",
+      "name": "日文假名",
+      "name_en": "Japanese Kana",
+      "count": 203,
+      "file": "kana.json"
+    },
+    {
+      "id": "caucasian",
+      "name": "高加索文字",
+      "name_en": "Caucasian Scripts",
+      "count": 221,
+      "file": "caucasian.json"
+    },
+    {
+      "id": "greek",
+      "name": "希臘文",
+      "name_en": "Greek",
+      "count": 361,
+      "file": "greek.json"
+    },
+    {
+      "id": "cyrillic",
+      "name": "西里爾文",
+      "name_en": "Cyrillic",
+      "count": 432,
+      "file": "cyrillic.json"
+    },
+    {
+      "id": "americas-indigenous",
+      "name": "美洲原住民文字",
+      "name_en": "Indigenous American Scripts",
+      "count": 951,
+      "file": "americas-indigenous.json"
+    },
+    {
+      "id": "latin-extensions",
+      "name": "拉丁文擴展集",
+      "name_en": "Latin Extensions",
+      "count": 728,
+      "file": "latin-extensions.json"
+    },
+    {
+      "id": "southeast-asian",
+      "name": "東南亞文字",
+      "name_en": "Southeast Asian Scripts",
+      "count": 1797,
+      "file": "southeast-asian.json"
+    },
+    {
+      "id": "north-indic",
+      "name": "北印度系文字",
+      "name_en": "North Indic Scripts",
+      "count": 402,
+      "file": "north-indic.json"
+    },
+    {
+      "id": "south-indic",
+      "name": "南印度系文字",
+      "name_en": "South Indic Scripts",
+      "count": 511,
+      "file": "south-indic.json"
+    },
+    {
+      "id": "ethiopic",
+      "name": "衣索比亞文",
+      "name_en": "Ethiopic",
+      "count": 1151,
+      "file": "ethiopic.json"
     },
     {
       "id": "ancient-greek-aegean",
-      "name": "古希臘羅馬與愛琴海文字",
+      "name": "古希臘羅馬|愛琴海文字",
       "name_en": "Ancient Greek & Aegean",
       "count": 1156,
       "file": "ancient-greek-aegean.json"
     },
     {
-      "id": "ancient-near-east",
-      "name": "古中東與腓尼基文字",
-      "name_en": "Ancient Near Eastern Scripts",
-      "count": 222,
-      "file": "ancient-near-east.json"
-    },
-    {
       "id": "ancient-persian-silkroad",
-      "name": "古波斯與絲路文字",
+      "name": "古波斯|絲路文字",
       "name_en": "Ancient Persian & Silk Road",
       "count": 313,
       "file": "ancient-persian-silkroad.json"
     },
     {
+      "id": "arabic",
+      "name": "阿拉伯文",
+      "name_en": "Arabic",
+      "count": 807,
+      "file": "arabic.json"
+    },
+    {
+      "id": "ancient-near-east",
+      "name": "古中東|腓尼基文字",
+      "name_en": "Ancient Near Eastern",
+      "count": 222,
+      "file": "ancient-near-east.json"
+    },
+    {
+      "id": "hebrew",
+      "name": "希伯來文",
+      "name_en": "Hebrew",
+      "count": 145,
+      "file": "hebrew.json"
+    },
+    {
+      "id": "ancient-indic",
+      "name": "印度系古文字",
+      "name_en": "Ancient Indic",
+      "count": 1591,
+      "file": "ancient-indic.json"
+    },
+    {
+      "id": "african",
+      "name": "非洲文字",
+      "name_en": "African Scripts",
+      "count": 690,
+      "file": "african.json"
+    },
+    {
+      "id": "other-ancient",
+      "name": "其他古文字",
+      "name_en": "Other Ancient Scripts",
+      "count": 612,
+      "file": "other-ancient.json"
+    },
+    {
+      "id": "other-modern",
+      "name": "現代文字",
+      "name_en": "Other Modern Scripts",
+      "count": 1798,
+      "file": "other-modern.json"
+    },
+    {
       "id": "cuneiform",
-      "name": "楔形文字（Cuneiform）",
+      "name": "楔形文字",
       "name_en": "Cuneiform",
       "count": 1254,
       "file": "cuneiform.json"
     },
     {
       "id": "egyptian-anatolian",
-      "name": "埃及與安那托利亞象形文字",
+      "name": "埃及|安那托利亞象形文字",
       "name_en": "Egyptian & Anatolian Hieroglyphs",
       "count": 1187,
       "file": "egyptian-anatolian.json"
-    },
-    {
-      "id": "ancient-indic",
-      "name": "印度系古文字（Brahmi、Sharada 等）",
-      "name_en": "Ancient Indic Scripts",
-      "count": 1591,
-      "file": "ancient-indic.json"
-    },
-    {
-      "id": "other-ancient",
-      "name": "其他古文字（Old Turkic、Hungarian 等）",
-      "name_en": "Other Ancient Scripts",
-      "count": 612,
-      "file": "other-ancient.json"
-    },
-    {
-      "id": "cjk-radicals-strokes",
-      "name": "CJK 部首與筆畫",
-      "name_en": "CJK Radicals & Strokes",
-      "count": 365,
-      "file": "cjk-radicals-strokes.json"
-    },
-    {
-      "id": "punctuation",
-      "name": "標點符號（Punctuation）",
-      "name_en": "Punctuation",
-      "count": 121,
-      "file": "punctuation.json"
-    },
-    {
-      "id": "math-operators",
-      "name": "數學運算符號（Math Operators）",
-      "name_en": "Mathematical Operators",
-      "count": 688,
-      "file": "math-operators.json"
-    },
-    {
-      "id": "math-alphanumeric",
-      "name": "數學字母符號（Math Alphanumeric）",
-      "name_en": "Mathematical Alphanumeric Symbols",
-      "count": 2,
-      "file": "math-alphanumeric.json"
-    },
-    {
-      "id": "sup-subscripts",
-      "name": "上下標數字字母（Sup & Subscripts）",
-      "name_en": "Superscripts & Subscripts",
-      "count": 42,
-      "file": "sup-subscripts.json"
-    },
-    {
-      "id": "currency",
-      "name": "貨幣符號（Currency）",
-      "name_en": "Currency Symbols",
-      "count": 33,
-      "file": "currency.json"
-    },
-    {
-      "id": "arrows",
-      "name": "箭頭符號（Arrows）",
-      "name_en": "Arrows",
-      "count": 509,
-      "file": "arrows.json"
-    },
-    {
-      "id": "geometry-box",
-      "name": "幾何圖形與製表（Geometry & Box）",
-      "name_en": "Geometric Shapes & Box Drawing",
-      "count": 256,
-      "file": "geometry-box.json"
-    },
-    {
-      "id": "letterlike-number-forms",
-      "name": "似字母與數字符號（Letterlike & Number Forms）",
-      "name_en": "Letterlike Symbols & Number Forms",
-      "count": 976,
-      "file": "letterlike-number-forms.json"
-    },
-    {
-      "id": "technical-misc",
-      "name": "技術與雜項符號（Technical & Misc）",
-      "name_en": "Technical & Miscellaneous Symbols",
-      "count": 754,
-      "file": "technical-misc.json"
-    },
-    {
-      "id": "musical",
-      "name": "音樂符號（Musical）",
-      "name_en": "Musical Symbols",
-      "count": 30,
-      "file": "musical.json"
-    },
-    {
-      "id": "games-divination",
-      "name": "遊戲與占卜符號（Games & Divination）",
-      "name_en": "Game & Divination Symbols",
-      "count": 493,
-      "file": "games-divination.json"
-    },
-    {
-      "id": "braille",
-      "name": "盲文（Braille Patterns）",
-      "name_en": "Braille Patterns",
-      "count": 256,
-      "file": "braille.json"
-    },
-    {
-      "id": "duployan-signwriting",
-      "name": "速記與其他符號文字（Duployan、SignWriting）",
-      "name_en": "Duployan & SignWriting",
-      "count": 142,
-      "file": "duployan-signwriting.json"
-    },
-    {
-      "id": "basic-latin-ascii",
-      "name": "基本拉丁與 ASCII",
-      "name_en": "Basic Latin (ASCII)",
-      "count": 94,
-      "file": "basic-latin-ascii.json"
     }
   ]
 }

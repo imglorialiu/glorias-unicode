@@ -1,12 +1,11 @@
 {
-  "id": "armenian-georgian",
-  "name": "高加索文字（Armenian、Georgian）",
-  "name_en": "Armenian & Georgian",
-  "count": 223,
+  "id": "caucasian",
+  "name": "高加索文字",
+  "name_en": "Caucasian Scripts",
+  "count": 221,
   "ranges": [
-    "U+0530-U+058F",
+    "U+0531-U+058F",
     "U+10A0-U+10FF",
-    "U+2D00-U+2D2F",
     "U+1C90-U+1CBF"
   ],
   "symbols": [
@@ -137,8 +136,6 @@
     "Ⴣ",
     "Ⴤ",
     "Ⴥ",
-    "Ⴧ",
-    "Ⴭ",
     "ა",
     "ბ",
     "გ",

@@ -1,12 +1,11 @@
 {
-  "id": "hangul-jamo",
-  "name": "韓文（Hangul Jamo）",
-  "name_en": "Hangul Jamo",
+  "id": "hangul",
+  "name": "韓文",
+  "name_en": "Hangul",
   "count": 350,
   "ranges": [
     "U+1100-U+11FF",
-    "U+3130-U+318F",
-    "U+A960-U+A97F"
+    "U+3131-U+318E"
   ],
   "symbols": [
     "ᄀ",

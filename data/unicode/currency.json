@@ -1,10 +1,10 @@
 {
   "id": "currency",
-  "name": "貨幣符號（Currency）",
+  "name": "貨幣符號",
   "name_en": "Currency Symbols",
-  "count": 33,
+  "count": 32,
   "ranges": [
-    "U+20A0-U+20CF"
+    "U+20A0-U+20BF"
   ],
   "symbols": [
     "₠",
@@ -38,7 +38,6 @@
     "₼",
     "₽",
     "₾",
-    "₿",
-    "⃀"
+    "₿"
   ]
 }
