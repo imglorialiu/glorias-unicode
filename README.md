@@ -1,4 +1,5 @@
 # 𝗚𝗹𝗢𝗥𝗶𝗔'𝘀 𝗨𝗻𝗶𝗰𝗼𝗱𝗲
+<img width="1214" height="557" alt="glorias_unicode_website" src="https://github.com/user-attachments/assets/f7f87e70-a348-4c09-a9ce-9d647bf14b6f" />
 
 > A pure-Unicode kaomoji creation tool in the making, starting from the building blocks.
 
