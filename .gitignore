@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows（保險起見也加上，未來用 Windows 編輯不會出問題）
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 編輯器暫存檔
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node（如果未來真的用 npm 才會用到，先預留）
+node_modules/
